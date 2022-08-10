@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="AppTheme" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="android:statusBarColor">#00000000</item>
+    </style>
+    <style name="AppTheme.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="android:fontFamily">@font/arimo</item>
+        <item name="colorPrimary">@color/blue_default</item>
+        <item name="colorError">@color/error_color_material_light</item>
+        <item name="android:statusBarColor">#000000</item>
+    </style>
+</resources>
