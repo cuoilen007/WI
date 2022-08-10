@@ -28,16 +28,16 @@
                                         <div class="text-center">
                                             <h1 class="h2 text-primary font-weight-bold mb-4">Login To WI</h1>
                                         </div>
-                                        <form class="user">
+                                        <form class="user" th:action="@{/login}" method="POST">
                                             <div class="form-group">
                                                 <!-- <input type="email" class="form-control form-control-user" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Enter Email Address..."> -->
-                                                <input id="username" type="text" class="form-control-admin" placeholder="Enter Username" />
+                                                <input name="mail" id="username" type="text" class="form-control-admin" placeholder="Enter Username" />
                                                 <div class="icon">
                                                     <i class="fas fa-user-circle"></i>
                                                 </div>
                                             </div>
                                             <div class="form-group">
-                                                <input id="password" type="password" class="form-control-admin" placeholder="Enter Password">
+                                                <input name="pass" id="password" type="password" class="form-control-admin" placeholder="Enter Password">
                                                 <div class="icon">
                                                     <i class="fas fa-lock"></i>
                                                 </div>
@@ -57,7 +57,7 @@
                                                     <a class="small" href="forgot-password.html">Forgot Password?</a>
                                                 </div>
                                             </div>
-                                            <a href="" class="btn btn-primary btn-user btn-block">Sign In</a>
+                                            <input type="submit" class="btn btn-primary btn-user btn-block">Sign In</input>
                                             <!-- <hr>
                                             <a href="index.html" class="btn btn-google btn-user btn-block">
                                                 <i class="fab fa-google fa-fw"></i> Login with Google

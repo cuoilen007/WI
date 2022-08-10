@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -58,9 +60,16 @@ public class UserController {
 //        return _userService.getList();
 //    }
     
-    @GetMapping("/test-user")
-    public User findUserByName(){
-        String mail = "thaivinh@gmail.com";
-        return _userService.getUserbymail(mail);
+    @PostMapping(value = "/login")
+    public String findUserByName(@RequestParam("mail") String mail, @RequestParam("pass") String pass ){
+        if (_userService.getUserbymail(mail).getPassword().equals(pass)) {
+            return "admin/index";
+        }
+        return "layouts/register";
     }
+    @GetMapping(value = "/login")
+    public String findUserByName(){
+        return "layouts/login";
+    }
+    
 }
