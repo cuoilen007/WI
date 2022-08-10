@@ -30,7 +30,7 @@ public class UserController {
 
     @GetMapping("/test")
     public String test() {
-        return "admin/index";
+        return "layouts/register";
     }
 
 //    @PostMapping("/create")
