@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1075237546831",
+    "project_id": "wi-database-2f2b9",
+    "storage_bucket": "wi-database-2f2b9.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1075237546831:android:048cec11f7a18e93a2b33a",
+        "android_client_info": {
+          "package_name": "com.example.mobile"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1075237546831-7vqjh7fhm0tevl58funmm34tr6a3s4oc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDO4HMRvoGVDxXYOFhZzPzlV5kEZ-s9OjA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1075237546831-7vqjh7fhm0tevl58funmm34tr6a3s4oc.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
