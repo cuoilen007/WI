@@ -21,55 +21,53 @@
         android:textSize="50dp"
         android:textStyle="bold" />
     <com.google.android.material.textfield.TextInputLayout
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:id="@+id/a_login_et_username"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="20dp"
         android:layout_marginTop="50dp"
-        app:startIconDrawable="@drawable/ic_person"
-        app:endIconMode="clear_text"
         android:hint="Username"
-        >
+        app:endIconMode="clear_text"
+        app:startIconDrawable="@drawable/ic_person">
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:maxLength="25" />
     </com.google.android.material.textfield.TextInputLayout>
     <com.google.android.material.textfield.TextInputLayout
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:id="@+id/a_login_et_password"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="20dp"
-        app:startIconDrawable="@drawable/ic_key"
         android:layout_marginTop="20dp"
-        app:endIconMode="password_toggle"
         android:hint="Password"
-        >
+        app:endIconMode="password_toggle"
+        app:startIconDrawable="@drawable/ic_key">
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="textPassword"
-            android:maxLength="25"/>
+            android:maxLength="25" />
     </com.google.android.material.textfield.TextInputLayout>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="15dp"
-        android:orientation="horizontal"
-        android:gravity="end">
+        android:gravity="end"
+        android:orientation="horizontal">
 
         <TextView
             android:id="@+id/a_tv_forgotpasswor"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_marginRight="20dp"
-            android:textSize="16sp"
             android:fontFamily="@font/baloo"
             android:text="Forgot Password?"
             android:textColor="@color/blue_default"
+            android:textSize="16sp"
             android:textStyle="bold" />
     </LinearLayout>
 
@@ -87,25 +85,26 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginTop="50dp">
+        android:layout_marginTop="50dp"
+        android:gravity="center"
+        android:orientation="horizontal">
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:fontFamily="@font/baloo"
-            android:text="Not user? "
-            android:layout_marginLeft="20dp"
-            android:textAlignment="gravity" />
+            android:layout_marginEnd="5dp"
+            android:text="Don't have account? "
+            android:textSize="16sp" />
 
         <TextView
             android:id="@+id/a_tv_register"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_marginRight="20dp"
+            android:layout_marginStart="5dp"
             android:fontFamily="@font/baloo"
             android:text="Register now?"
-            android:layout_marginEnd="20dp"
             android:textColor="@color/blue_default"
+            android:textSize="16sp"
             android:textStyle="bold" />
     </LinearLayout>
 </LinearLayout>
