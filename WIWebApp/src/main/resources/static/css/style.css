@@ -1,0 +1,57 @@
+.logo-wrapper {
+    width: 3rem;
+}
+
+.logo-title {
+    font-size: 1.4rem;
+}
+
+form.user .form-group {
+    position: relative;
+}
+
+form.user .form-control-admin {
+    width: 100%;
+    padding: .8rem 2rem .8rem 2rem;
+    margin: 0.4rem;
+    border: 1px solid #d1d3e2;
+    outline: 0;
+    font-size: 0.8rem !important;
+    border-radius: 0.2rem;
+}
+
+form.user .form-group i {
+    position: absolute;
+}
+
+form.user .form-group .icon i {
+    margin-left: -0.4rem;
+    padding: 1.7rem 1.5rem;
+    top: -0.35rem;
+}
+
+form.user .form-group .show-password {
+    float: right;
+}
+
+form.user .form-group .show-password i {
+    margin-left: -1.4rem;
+    top: 1.35rem;
+    cursor: pointer;
+}
+
+form.user .btn-user {
+    font-size: 0.8rem;
+}
+
+.bg-login-bacground {
+    background: url("../img/login-background.jpg");
+    background-position: center;
+    background-size: cover;
+}
+
+.bg-register-background {
+    background: url("../img/register-background.jpg");
+    background-position: center;
+    background-size: cover;
+}
