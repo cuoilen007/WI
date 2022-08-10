@@ -57,4 +57,10 @@ public class UserController {
 //    public List<User> test() throws ClassNotFoundException {
 //        return _userService.getList();
 //    }
+    
+    @GetMapping("/test-user")
+    public User findUserByName(){
+        String mail = "thaivinh@gmail.com";
+        return _userService.getUserbymail(mail);
+    }
 }

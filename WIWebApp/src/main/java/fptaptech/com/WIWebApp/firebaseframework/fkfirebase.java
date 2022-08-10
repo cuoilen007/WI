@@ -10,17 +10,17 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.springframework.stereotype.Service;
 
-
 /**
  *
  * @author CHIEN
  * @param <T>
  */
-public final class fkfirebase<T>{
+public final class fkfirebase<T> {
 
     //private T t;
     private Class Tclass;
     private String Nclass;
+
     //private Firestore dbFirestore = FirestoreClient.getFirestore();
     public fkfirebase(T t) {
         try {
@@ -42,12 +42,12 @@ public final class fkfirebase<T>{
 //        }
 //        return null;
 //    }
-
     public Object test() throws ClassNotFoundException {
 
         //Object a = Class.forName(t.getClass().getName().toString()).cast(t);
         return null;
     }
+
     public String create(Object newob) {
         try {
             Firestore dbFirestore = FirestoreClient.getFirestore();
@@ -75,6 +75,7 @@ public final class fkfirebase<T>{
         }
         return null;
     }
+
     public T getCRUD(String documentID) throws InterruptedException, ExecutionException {
         Firestore dbFirestore = FirestoreClient.getFirestore();
         DocumentReference documentReference = dbFirestore.collection(Nclass).document(documentID);
@@ -86,7 +87,8 @@ public final class fkfirebase<T>{
         }
         return null;
     }
-    public String updateCRUD(Object object, String documentId){
+
+    public String updateCRUD(Object object, String documentId) {
         try {
             Firestore dbFirestore = FirestoreClient.getFirestore();
             ApiFuture<WriteResult> collectionApiFuture = dbFirestore.collection(Nclass).document(documentId).set(object);
@@ -101,5 +103,21 @@ public final class fkfirebase<T>{
         Firestore dbFirestore = FirestoreClient.getFirestore();
         dbFirestore.collection(Nclass).document(documentID).delete();
         return "Successfully delete" + documentID;
+    }
+
+    public T getUserbymail(String mail) throws InterruptedException, ExecutionException {
+        Firestore dbFirestore = FirestoreClient.getFirestore();
+        CollectionReference users = dbFirestore.collection(Nclass);
+        Query query = users.whereEqualTo("email", mail);
+
+        ApiFuture<QuerySnapshot> querySnapshot = query.get();
+        
+        List<QueryDocumentSnapshot> documents = querySnapshot.get().getDocuments();
+        DocumentSnapshot document = documents.get(0);
+        if (document.exists()) {
+            T ob = (T) document.toObject(Tclass);
+            return ob;
+        }
+        return null;
     }
 }
