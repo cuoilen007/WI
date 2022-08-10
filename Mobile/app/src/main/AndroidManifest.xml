@@ -11,6 +11,10 @@
         android:theme="@style/Theme.Mobile">
         <activity
             android:name=".activity.ForgotPasswordActivity"
+            android:name=".activity.FeedbackActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.ContactusActivity"
             android:exported="false" />
         <activity
             android:name=".activity.RegisterActivity"
