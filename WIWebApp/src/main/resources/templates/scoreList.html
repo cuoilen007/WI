@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+         <table th:border="1">
+                        
+                    <tr> 		
+                        <th>Student Name: </th>   
+                        <th>Subject</th>
+                        <th>Test</th>
+                        <th>Score</th>                                                                   
+                    </tr>               
+                </thead>
+               
+                    <tr th:each="s: ${list}">
+                        <td th:text="${s.getStudentid()}"></td>                      
+                        <td th:text="${s.getSubjectid()}"></td>   
+                         <td th:text="${s.getTestId()}"></td>  
+                         <td th:text="${s.getScoreReceived()}"></td>  
+                    </tr>                 
+               
+            </table>
+    </body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <form th:action="@{/createScore}" th:object="${score}"  method="Post">
+            <select th:field="*{classId}" class="form-control" >
+                <option th:each="i: ${class}" 
+                        th:value="${i.getClassName}" 
+                        th:text="${i.getClassName}">                           
+                </option>
+            </select>
+            <select th:field="*{subjectid}" class="form-control" >
+                <option th:each="i: ${subject}" 
+                        th:value="${i.getSubjectName()}" 
+                        th:text="${i.getSubjectName()}">                           
+                </option>
+            </select>
+            <select th:field="*{testId}" class="form-control" >
+                <option th:each="i: ${test}" 
+                        th:value="${i.testname}" 
+                        th:text="${i.testname}">                           
+                </option>
+            </select>
+
+            <table >
+
+                <tr> 		
+                    <th>Student Name: </th>                                                
+                    <th>Score</th>                                                                   
+                </tr>               
+
+                <tr th:each="s: ${student}">
+                    <td><span th:text="${s.userId}"><input type="hidden" name="userId" th:value="${s.userId}"></span></td>                      
+                    <td><input type="number" min=0 name="score" th:value="0"></td>                                                                      
+                </tr>                 
+
+            </table>
+            <input value="Add Score" type="submit"/>
+        </form>
+    </body>
+</html>
