@@ -3,6 +3,10 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/English/W6/Mobile/app/src/main/res/drawable/ic_baseline_groups_24.xml" value="0.2425" />
+        <entry key="..\:/English/W6/Mobile/app/src/main/res/layout/activity_details_score.xml" value="0.36666666666666664" />
+        <entry key="..\:/English/W6/Mobile/app/src/main/res/layout/activity_main.xml" value="0.36666666666666664" />
+        <entry key="..\:/English/W6/Mobile/app/src/main/res/layout/detail_score_item.xml" value="0.36666666666666664" />
         <entry key="..\:/FPT/WI/WI/Mobile/app/src/main/res/drawable/ic_register_hero.xml" value="0.187" />
         <entry key="..\:/FPT/WI/WI/Mobile/app/src/main/res/layout/activity_login.xml" value="0.2734375" />
         <entry key="..\:/FPT/WI/WI/Mobile/app/src/main/res/layout/activity_main.xml" value="0.2734375" />
