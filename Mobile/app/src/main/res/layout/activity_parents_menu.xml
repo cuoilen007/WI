@@ -29,9 +29,9 @@
                 <TextView
                     android:layout_alignParentLeft="true"
                     android:layout_centerVertical="true"
-                    android:text="Student Menu"
+                    android:text="Parents/ \nGuardians \nMenu"
                     android:layout_height="match_parent"
-                     android:layout_width="match_parent"/>
+                    android:layout_width="match_parent"/>
 
                 <ImageView
                     android:layout_width="wrap_content"
@@ -58,24 +58,17 @@
 
             <Button
                 style="@style/menuButton"
-                android:id="@+id/btnStudyResources"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Study Resources" />
-
-            <Button
-                style="@style/menuButton"
-                android:id="@+id/btnRevisionClasses"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Revision Classes" />
-
-            <Button
-                style="@style/menuButton"
                 android:id="@+id/btnHelplines"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Helplines" />
+
+            <CheckBox
+                android:id="@+id/checkBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Send Me By Email" />
+
         </LinearLayout>
 
 

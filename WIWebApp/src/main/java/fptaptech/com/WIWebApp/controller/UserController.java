@@ -34,31 +34,6 @@ public class UserController {
     public String test() {
         return "layouts/register";
     }
-
-//    @PostMapping("/create")
-//    public String createCRUD(@RequestBody crud_user user) {
-//        return userreposytory.create(user);
-//    }
-//
-//    @GetMapping("/get")
-//    public crud_user getCRUD(@RequestParam String documentId) throws InterruptedException, ExecutionException {
-//        crud_user a = userreposytory.getCRUD(documentId);
-//        return a;
-//    }
-//
-//    @PutMapping("/update")
-//    public String updateCRUD(@RequestBody crud_user user){
-//        return userreposytory.updateCRUD(user, "7oWgQChwezGI0qNwbn7k");
-//    }
-//
-//    @DeleteMapping("/delete")
-//    public String deleteCRUD(@RequestParam String documentId) {
-//        return userreposytory.deleteCRUD(documentId);
-//    }
-//    @GetMapping("/test")
-//    public List<User> test() throws ClassNotFoundException {
-//        return _userService.getList();
-//    }
     
     @PostMapping(value = "/login")
     public String findUserByName(@RequestParam("mail") String mail, @RequestParam("pass") String pass ){
@@ -72,4 +47,15 @@ public class UserController {
         return "layouts/login";
     }
     
+    @PostMapping(value = "user/create-student")
+    public String createStudend(@RequestBody()User user){
+        _userService.create(user);
+        return "layouts/login";
+    }
+    @PostMapping(value = "user/create-teacher")
+    public String createTeacher(@RequestBody()User user){
+//        user.se
+        _userService.create(user);
+        return "layouts/login";
+    }
 }

@@ -18,9 +18,10 @@ import org.springframework.stereotype.Service;
  * @author CHIEN
  */
 @Service
-public class UserService implements IUser{
+public class UserService implements IUser {
+
     private final fkfirebase<User> _userRepo = new fkfirebase<>(new User());
-    
+
     @Override
     public List<User> getList() {
         return _userRepo.findAll();
@@ -28,12 +29,27 @@ public class UserService implements IUser{
 
     @Override
     public User getUserbymail(String mail) {
-        try {
-            return _userRepo.getUserbymail(mail);
-        } catch (InterruptedException | ExecutionException ex) {
-            Logger.getLogger(UserService.class.getName()).log(Level.SEVERE, null, ex);
+        return _userRepo.getByField("email", mail);
+    }
+
+    @Override
+    public User create(User user) {
+        if (_userRepo.getByField("email", user.getEmail()) == null) {
+            if (!(_userRepo.create(user).equals("fail"))) {
+                return user;
+            }
         }
         return null;
     }
-    
+
+    @Override
+    public User update(User user) {
+        if (!(_userRepo.getByField("email" ,user.getEmail()) == null)) {
+            if (!(_userRepo.update(user, user.getEmail()).equals("fail"))) {
+                return user;
+            }
+        }
+        return null;
+    }
+
 }
