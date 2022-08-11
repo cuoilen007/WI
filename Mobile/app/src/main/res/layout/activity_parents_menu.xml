@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="center"
+    android:focusableInTouchMode="true"
+    android:gravity="center">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_centerInParent="true"
+        android:paddingTop="20dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="20dp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerVertical="true"
+                    android:text="Parents/ \nGuardians \nMenu"
+                    android:layout_height="match_parent"
+                    android:layout_width="match_parent"/>
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentRight="true"
+                    android:src="@drawable/ic_register_hero" />
+            </RelativeLayout>
+
+            <Button
+                style="@style/menuButton"
+                android:layout_gravity="center_horizontal"
+                android:id="@+id/btnViewScore"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="View Score" />
+
+            <Button
+                style="@style/menuButton"
+                android:id="@+id/btnAcademyProgress"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Academic Progress" />
+
+            <Button
+                style="@style/menuButton"
+                android:id="@+id/btnHelplines"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Helplines" />
+
+            <CheckBox
+                android:id="@+id/checkBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Send Me By Email" />
+
+        </LinearLayout>
+
+
+    </ScrollView>
+
+
+
+
+</RelativeLayout>

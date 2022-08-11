@@ -3,12 +3,23 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/FPT/WI/WI/Mobile/app/src/main/res/drawable/button_background_blue.xml" value="0.187" />
+        <entry key="..\:/FPT/WI/WI/Mobile/app/src/main/res/drawable/ic_register_hero.xml" value="0.187" />
+        <entry key="..\:/FPT/WI/WI/Mobile/app/src/main/res/layout/activity_add_study_resource.xml" value="0.4010416666666667" />
+        <entry key="..\:/FPT/WI/WI/Mobile/app/src/main/res/layout/activity_contactus.xml" value="0.20052083333333334" />
+        <entry key="..\:/FPT/WI/WI/Mobile/app/src/main/res/layout/activity_details_score.xml" value="0.1453125" />
+        <entry key="..\:/FPT/WI/WI/Mobile/app/src/main/res/layout/activity_feedback.xml" value="0.1453125" />
         <entry key="..\:/FPT/WI/WI/Mobile/app/src/main/res/layout/activity_login.xml" value="0.2734375" />
         <entry key="..\:/FPT/WI/WI/Mobile/app/src/main/res/layout/activity_main.xml" value="0.2734375" />
+        <entry key="..\:/FPT/WI/WI/Mobile/app/src/main/res/layout/activity_parents_menu.xml" value="0.2734375" />
+        <entry key="..\:/FPT/WI/WI/Mobile/app/src/main/res/layout/activity_register.xml" value="0.20052083333333334" />
+        <entry key="..\:/FPT/WI/WI/Mobile/app/src/main/res/layout/activity_student_menu.xml" value="0.2734375" />
+        <entry key="..\:/FPT/WI/WI/Mobile/app/src/main/res/layout/activity_teacher_menu.xml" value="0.2734375" />
         <entry key="..\:/FPT/WI/WI/Mobile/app/src/main/res/layout/activity_view_score.xml" value="0.2754782700075322" />
+        <entry key="..\:/FPT/WI/WI/Mobile/app/src/main/res/layout/add_score_item.xml" value="0.20052083333333334" />
+        <entry key="..\:/FPT/WI/WI/Mobile/app/src/main/res/layout/detail_score_item.xml" value="0.1453125" />
         <entry key="..\:/FPT/WI/WI/Mobile/app/src/main/res/layout/score.xml" value="0.2734375" />
-        <entry key="..\:/Users/CHIEN/Desktop/project-techwiz/template-merge/WI/Mobile/app/src/main/res/layout/activity_list_score.xml" value="0.14666666666666667" />
-        <entry key="..\:/Users/CHIEN/Desktop/project-techwiz/template-merge/WI/Mobile/app/src/main/res/layout/item_list_score.xml" value="0.1796875" />
+        <entry key="..\:/FPT/WI/WI/Mobile/app/src/main/res/layout/score_item.xml" value="0.1453125" />
       </map>
     </option>
   </component>

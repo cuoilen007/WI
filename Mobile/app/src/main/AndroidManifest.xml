@@ -6,6 +6,7 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
+        android:extractNativeLibs="true"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -24,6 +25,21 @@
         <!-- <activity -->
         <!-- android:name=".activity.Student.ViewScoreActivity" -->
         <!-- android:exported="false" /> -->
+            android:name=".activity.AddScoreActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.AddStudyResourceActivity"
+            android:usesCleartextTraffic="true"
+            android:exported="false" />
+        <activity
+            android:name=".activity.ParentsMenuActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.TeacherMenuActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.StudentMenuActivity"
+            android:exported="false" />
         <activity
             android:name=".activity.FeedbackActivity"
             android:exported="false" />
@@ -40,7 +56,6 @@
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
