@@ -42,34 +42,25 @@
             </RelativeLayout>
 
             <Button
+                style="@style/menuButton"
                 android:id="@+id/btnViewScore"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="View Score" />
-
-            <Button
-                android:id="@+id/btnAcademyProgress"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Academic Progress" />
 
             <Button
-                android:id="@+id/btnStudyResources"
+                style="@style/menuButton"
+                android:id="@+id/btnAddStudyResources"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Study Resources" />
+                android:text="Add Study Resources" />
 
             <Button
+                style="@style/menuButton"
                 android:id="@+id/btnRevisionClasses"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Revision Classes" />
-
-            <Button
-                android:id="@+id/btnHelplines"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Helplines" />
+                android:text="Add Revision Classes" />
         </LinearLayout>
 
 
