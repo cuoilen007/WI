@@ -1,7 +1,18 @@
 package com.example.mobile.model;
 
-public class Subject {
-    private Long id;
-    private String name;
+import java.io.Serializable;
 
+public class Subject implements Serializable {
+    private String SubjectName;
+
+    public Subject() {
+    }
+
+    public String getSubjectName() {
+        return SubjectName;
+    }
+
+    public void setSubjectName(String SubjectName) {
+        this.SubjectName = SubjectName;
+    }
 }

@@ -1,7 +1,27 @@
 package com.example.mobile.model;
 
-public class Class {
-    private Long id;
-    private String name;//lop 1A,2B, 3C
-    private int grade; //lop 1 2 3 4
+import java.io.Serializable;
+
+public class Class implements Serializable {
+    private String className;
+    private Long grade;
+
+    public Class() {
+    }
+
+    public String getClassName() {
+        return className;
+    }
+
+    public void setClassName(String className) {
+        this.className = className;
+    }
+
+    public Long getGrade() {
+        return grade;
+    }
+
+    public void setGrade(Long grade) {
+        this.grade = grade;
+    }
 }
