@@ -30,7 +30,7 @@ public class UserController {
 
     @GetMapping("/test")
     public String test() {
-        return "layouts/register";
+        return "layouts/forgot-password";
     }
 
 //    @PostMapping("/create")
