@@ -13,6 +13,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Mobile">
         <activity
+            android:name=".activity.TeacherMenuActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.StudentMenuActivity"
+            android:exported="false" />
+        <activity
             android:name=".activity.Student.ViewScoreActivity"
             android:exported="false" />
         <activity
