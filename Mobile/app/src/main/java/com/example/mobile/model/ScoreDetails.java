@@ -3,31 +3,16 @@ package com.example.mobile.model;
 import java.io.Serializable;
 
 public class ScoreDetails implements Serializable {
-    private String testId;
-    private String classId;
+    private String testname;
+    private String className;
     private Long studentid;
-    private String subjectid;
+    private String SubjectName;
     private int scoreReceived;
     private String date;
 
     public ScoreDetails() {
     }
 
-    public String getTestId() {
-        return testId;
-    }
-
-    public void setTestId(String testId) {
-        this.testId = testId;
-    }
-
-    public String getClassId() {
-        return classId;
-    }
-
-    public void setClassId(String classId) {
-        this.classId = classId;
-    }
 
     public Long getStudentid() {
         return studentid;
@@ -37,12 +22,28 @@ public class ScoreDetails implements Serializable {
         this.studentid = studentid;
     }
 
-    public String getSubjectid() {
-        return subjectid;
+    public String getTestname() {
+        return testname;
     }
 
-    public void setSubjectid(String subjectid) {
-        this.subjectid = subjectid;
+    public void setTestname(String testname) {
+        this.testname = testname;
+    }
+
+    public String getClassName() {
+        return className;
+    }
+
+    public void setClassName(String className) {
+        this.className = className;
+    }
+
+    public String getSubjectName() {
+        return SubjectName;
+    }
+
+    public void setSubjectName(String subjectName) {
+        SubjectName = subjectName;
     }
 
     public int getScoreReceived() {
