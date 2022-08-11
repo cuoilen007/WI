@@ -18,12 +18,19 @@
         <activity
             android:name=".activity.StudentMenuActivity"
             android:exported="false" />
-        <activity
+        <!--<activity
             android:name=".activity.Student.ViewScoreActivity"
-            android:exported="false" />
+            android:exported="false" />-->
         <activity
             android:name=".activity.FeedbackActivity"
-            android:exported="false" />
+            android:exported="true"
+            android:theme="@style/AppTheme.NoActionBar">
+        <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
+
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter>
+        </activity>
         <activity
             android:name=".activity.ContactusActivity"
             android:exported="false" />
