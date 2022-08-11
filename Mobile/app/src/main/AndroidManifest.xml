@@ -29,6 +29,9 @@
         <activity
             android:name=".activity.ParentsMenuActivity"
             android:exported="false" />
+        <!--<activity
+            android:name=".activity.Student.ViewScoreActivity"
+            android:exported="false" />-->
         <activity
             android:name=".activity.TeacherMenuActivity"
             android:exported="false" />
@@ -37,7 +40,7 @@
             android:exported="false" />
         <activity
             android:name=".activity.FeedbackActivity"
-            android:exported="false" />
+            android:exported="false"/>
         <activity
             android:name=".activity.ContactusActivity"
             android:exported="false" />
