@@ -21,7 +21,7 @@
         android:layout_weight="1"
         android:layout_marginTop="5dp"
         android:ems="10"
-        android:background="@color/White_smoke"
+        android:background="#E6E6FA"
         android:textAlignment="center"
         android:inputType="textPersonName"
         android:hint="0.0" />
