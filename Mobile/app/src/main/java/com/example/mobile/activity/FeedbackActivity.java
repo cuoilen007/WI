@@ -44,14 +44,16 @@ public class FeedbackActivity extends AppCompatActivity {
                 Intent intent = new Intent(Intent.ACTION_SEND);
                 intent.setType("message/html");
                 intent.putExtra(Intent.EXTRA_EMAIL, new String[]{"wi.fpt.techwiz@gmail.com"}); // Get Mail
-
-
                 //
                 intent.putExtra(Intent.EXTRA_SUBJECT, "Subject: " +txtSubject.getText().toString().trim()); // Subject
                 intent.putExtra(Intent.EXTRA_TEXT,
                         "Name: "+txtName.getText().toString().trim()+"\nMessage: "+txtMess.getText().toString().trim()); // Name
                 try {
-                    startActivity(Intent.createChooser(intent, "Other options...")); // Chooser
+                    if(txtName.getText().toString().trim().length()==0 || txtSubject.getText().toString().trim().length()==0 || txtMess.getText().toString().trim().length()==0){
+                        Toast.makeText(getApplicationContext(), "Invalid send mail, please enter in full on the input bar", Toast.LENGTH_SHORT).show();
+                    } else {
+                        startActivity(Intent.createChooser(intent, "Other options...")); // Chooser
+                    }
                 } catch (android.content.ActivityNotFoundException ex) {
                     Toast.makeText(getApplicationContext(), "There are no email clients installed.", Toast.LENGTH_SHORT).show();
                 }
