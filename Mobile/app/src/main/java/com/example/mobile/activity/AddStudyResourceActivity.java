@@ -49,25 +49,10 @@ public class AddStudyResourceActivity extends AppCompatActivity {
         btnAddStudyResource.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                FirebaseFirestore db = FirebaseFirestore.getInstance();
-
-
-                // Add a new document with a generated I
-                DocumentReference docRef = db.collection("User").document();
-                db.collection("StudyResource").document("1gAYHoLkHpSbYc7hDehA")
-                        .set(studyResource)
-                        .addOnSuccessListener(new OnSuccessListener<Void>() {
-                            @Override
-                            public void onSuccess(Void aVoid) {
-                                return;
-                            }
-                        })
-                        .addOnFailureListener(new OnFailureListener() {
-                            @Override
-                            public void onFailure(@NonNull Exception e) {
-                                return;
-                            }
-                        });
+                FirebaseDatabase database = FirebaseDatabase.getInstance();
+                DatabaseReference myRef = database.getReference("StudyResource");
+                myRef.setValue("Hello World!! Im Rival :)");
+                myRef.push();
             }
         });
     }
