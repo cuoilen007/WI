@@ -38,21 +38,26 @@ public class AddStudyResourceActivity extends AppCompatActivity {
         String name = editName.getText().toString();
         String linkUrl = editLinkUrl.getText().toString();
 
-        // Create a new user with a first, middle, and last name
-        Map<String, Object> hashMap = new HashMap<>();
-        hashMap.put("link", "asd");
-        hashMap.put("name", "asd");
-        hashMap.put("subjectId", "asd");
-
         StudyResource studyResource = new StudyResource(linkUrl,name,"asd" );
 
         btnAddStudyResource.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                FirebaseDatabase database = FirebaseDatabase.getInstance();
-                DatabaseReference myRef = database.getReference("StudyResource");
-                myRef.setValue("Hello World!! Im Rival :)");
-                myRef.push();
+                FirebaseFirestore db = FirebaseFirestore.getInstance();
+                db.collection("StudyResource")
+                        .add(studyResource)
+                        .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+                            @Override
+                            public void onSuccess(DocumentReference documentReference) {
+                                Log.d(TAG, "DocumentSnapshot added with ID: " + documentReference.getId());
+                            }
+                        })
+                        .addOnFailureListener(new OnFailureListener() {
+                            @Override
+                            public void onFailure(@NonNull Exception e) {
+                                Log.w(TAG, "Error adding document", e);
+                            }
+                        });
             }
         });
     }
