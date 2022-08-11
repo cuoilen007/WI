@@ -43,12 +43,10 @@ public final class fkfirebase<T> {
 //        return null;
 //    }
     public Object test() throws ClassNotFoundException {
-
-        //Object a = Class.forName(t.getClass().getName().toString()).cast(t);
         return null;
     }
 
-    public String create(Object newob) {
+    public String create(T newob) {
         try {
             Firestore dbFirestore = FirestoreClient.getFirestore();
             ApiFuture<WriteResult> collectionApiFuture = dbFirestore.collection(Nclass).document().set(newob);
@@ -60,7 +58,6 @@ public final class fkfirebase<T> {
     }
 
     public List<T> findAll() {
-
         try {
             Firestore dbFirestore = FirestoreClient.getFirestore();
             List<QueryDocumentSnapshot> lists = dbFirestore.collection(Nclass).get().get().getDocuments();
@@ -76,7 +73,7 @@ public final class fkfirebase<T> {
         return null;
     }
 
-    public T getCRUD(String documentID) throws InterruptedException, ExecutionException {
+    public T getByDocumentId(String documentID) throws InterruptedException, ExecutionException {
         Firestore dbFirestore = FirestoreClient.getFirestore();
         DocumentReference documentReference = dbFirestore.collection(Nclass).document(documentID);
         ApiFuture<DocumentSnapshot> future = documentReference.get();
@@ -88,7 +85,7 @@ public final class fkfirebase<T> {
         return null;
     }
 
-    public String updateCRUD(Object object, String documentId) {
+    public String update(Object object, String documentId) {
         try {
             Firestore dbFirestore = FirestoreClient.getFirestore();
             ApiFuture<WriteResult> collectionApiFuture = dbFirestore.collection(Nclass).document(documentId).set(object);
@@ -99,25 +96,42 @@ public final class fkfirebase<T> {
         return "fail";
     }
 
-    public String deleteCRUD(String documentID) {
+    public String delete(String documentID) {
         Firestore dbFirestore = FirestoreClient.getFirestore();
         dbFirestore.collection(Nclass).document(documentID).delete();
         return "Successfully delete" + documentID;
     }
 
-    public T getUserbymail(String mail) throws InterruptedException, ExecutionException {
-        Firestore dbFirestore = FirestoreClient.getFirestore();
-        CollectionReference users = dbFirestore.collection(Nclass);
-        Query query = users.whereEqualTo("email", mail);
-
-        ApiFuture<QuerySnapshot> querySnapshot = query.get();
-        
-        List<QueryDocumentSnapshot> documents = querySnapshot.get().getDocuments();
-        DocumentSnapshot document = documents.get(0);
-        if (document.exists()) {
-            T ob = (T) document.toObject(Tclass);
-            return ob;
+    public T getByField(String fielddName, String mail) {
+        try {
+            Firestore dbFirestore = FirestoreClient.getFirestore();
+            CollectionReference users = dbFirestore.collection(Nclass);
+            Query query = users.whereEqualTo( fielddName, mail);
+            
+            ApiFuture<QuerySnapshot> querySnapshot = query.get();
+            
+            List<QueryDocumentSnapshot> documents = querySnapshot.get().getDocuments();
+            DocumentSnapshot document = documents.get(0);
+            if (document.exists()) {
+                T ob = (T) document.toObject(Tclass);
+                return ob;
+            }
+            return null;
+        } catch (InterruptedException ex) {
+            Logger.getLogger(fkfirebase.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ExecutionException ex) {
+            Logger.getLogger(fkfirebase.class.getName()).log(Level.SEVERE, null, ex);
         }
         return null;
+    }
+    public String create(T newob, String documentId) {
+        try {
+            Firestore dbFirestore = FirestoreClient.getFirestore();
+            ApiFuture<WriteResult> collectionApiFuture = dbFirestore.collection(Nclass).document(documentId).set(newob);
+            return collectionApiFuture.get().getUpdateTime().toString();
+        } catch (InterruptedException | ExecutionException ex) {
+            Logger.getLogger(fkfirebase.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return "fail";
     }
 }

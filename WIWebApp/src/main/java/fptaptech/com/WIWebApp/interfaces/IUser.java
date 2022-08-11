@@ -14,4 +14,6 @@ import java.util.List;
 public interface IUser {
     List<User> getList();
     User getUserbymail(String mail);
+    User create(User user);
+    User update(User user);
 }
