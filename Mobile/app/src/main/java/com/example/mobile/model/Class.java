@@ -4,7 +4,7 @@ import java.io.Serializable;
 
 public class Class implements Serializable {
     private String className;
-    private Long grade;
+    private String grade;
 
     public Class() {
     }
@@ -17,11 +17,11 @@ public class Class implements Serializable {
         this.className = className;
     }
 
-    public Long getGrade() {
+    public String getGrade() {
         return grade;
     }
 
-    public void setGrade(Long grade) {
+    public void setGrade(String grade) {
         this.grade = grade;
     }
 }

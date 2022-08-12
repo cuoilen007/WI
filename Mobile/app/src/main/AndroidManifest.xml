@@ -14,16 +14,19 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Mobile">
         <activity
+            android:name=".activity.AddScoreActivity"
+            android:exported="false">
+        </activity>
+        <activity
+            android:name=".activity.MainActivity"
+            android:exported="false">
+        </activity>
+        <activity
             android:name=".activity.ViewScoresActivity"
             android:exported="false" />
         <activity
             android:name=".activity.ListScoreActivity"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+            android:exported="false">
         </activity> <!-- <activity -->
         <!-- android:name=".activity.Student.ViewScoreActivity" -->
         <!-- android:exported="false" /> -->
@@ -48,8 +51,7 @@
             android:exported="false" />
         <activity
             android:name=".activity.RegisterActivity"
-            android:exported="false"
-            android:theme="@style/Theme.AppCompat.NoActionBar" />
+            android:exported="false"/>
         <activity
             android:name=".activity.LoginActivity"
             android:exported="true"

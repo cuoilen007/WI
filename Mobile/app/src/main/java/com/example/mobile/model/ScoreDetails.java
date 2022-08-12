@@ -5,7 +5,7 @@ import java.io.Serializable;
 public class ScoreDetails implements Serializable {
     private String testname;
     private String className;
-    private Long studentid;
+    private String studentid;
     private String SubjectName;
     private int scoreReceived;
     private String date;
@@ -14,11 +14,11 @@ public class ScoreDetails implements Serializable {
     }
 
 
-    public Long getStudentid() {
+    public String getStudentid() {
         return studentid;
     }
 
-    public void setStudentid(Long studentid) {
+    public void setStudentid(String studentid) {
         this.studentid = studentid;
     }
 
