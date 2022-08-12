@@ -10,69 +10,294 @@
         android:id="@+id/textView24"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="30dp"
         android:text="View Scores"
+        android:textSize="30dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="28dp" />
+        tools:layout_editor_absoluteY="16dp" />
 
     <TextView
         android:id="@+id/textView25"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Student Name"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="80dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.049"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.112" />
 
     <TextView
         android:id="@+id/textView27"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Class"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="114dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.045"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.16" />
 
     <TextView
         android:id="@+id/tvName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        tools:layout_editor_absoluteX="123dp"
-        tools:layout_editor_absoluteY="80dp" />
+        android:layout_width="182dp"
+        android:layout_height="21dp"
+        android:layout_marginStart="18dp"
+        android:layout_marginTop="80dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
 
     <TextView
         android:id="@+id/tvClass"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        tools:layout_editor_absoluteX="123dp"
-        tools:layout_editor_absoluteY="114dp" />
-
-    <TextView
-        android:id="@+id/textView30"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Semester"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="149dp" />
-
-    <TextView
-        android:id="@+id/tvSemester"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        tools:layout_editor_absoluteX="123dp"
-        tools:layout_editor_absoluteY="149dp" />
+        android:layout_width="180dp"
+        android:layout_height="23dp"
+        android:layout_marginStart="71dp"
+        android:layout_marginTop="114dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/textView27"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
 
     <Spinner
         android:id="@+id/spSubject"
         android:layout_width="210dp"
         android:layout_height="24dp"
-        tools:layout_editor_absoluteX="123dp"
-        tools:layout_editor_absoluteY="180dp" />
+        android:layout_marginStart="59dp"
+        android:layout_marginTop="120dp"
+        android:layout_marginEnd="78dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/textView32"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.063" />
 
     <TextView
         android:id="@+id/textView32"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Subject"
-        tools:layout_editor_absoluteX="17dp"
-        tools:layout_editor_absoluteY="185dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.046"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.221" />
+
+    <TableLayout
+        android:layout_width="402dp"
+        android:layout_height="78dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="1dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="450dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.523"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/spSubject"
+        app:layout_constraintVertical_bias="1.0">
+
+        <TextView
+            android:id="@+id/textView30"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:text="Semester 1"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.074"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.287" />
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center">
+
+            <TextView
+                android:layout_marginLeft="9dp"
+                android:layout_marginRight="9dp"
+                android:width="90dp"
+                android:gravity="center"
+                android:text="Fast Test \n(10%)" />
+
+            <TextView
+                android:layout_height="match_parent"
+                android:layout_marginLeft="9dp"
+                android:layout_marginRight="9dp"
+                android:width="90dp"
+                android:gravity="center"
+                android:text="Middle Test \n(30%)" />
+
+            <TextView
+                android:layout_marginLeft="9dp"
+                android:layout_marginRight="9dp"
+                android:width="90dp"
+                android:gravity="center"
+                android:text="Final Test \n(60%)" />
+
+            <TextView
+                android:layout_marginLeft="9dp"
+                android:layout_marginRight="9dp"
+                android:width="90dp"
+                android:gravity="center"
+                android:text="Total" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/tvFastTest1"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="9dp"
+                android:layout_marginRight="9dp"
+                android:width="90dp"
+                android:gravity="center"
+                android:text="" />
+
+            <TextView
+                android:id="@+id/tvMiddleTest1"
+                android:layout_marginLeft="9dp"
+                android:layout_marginRight="9dp"
+                android:width="90dp"
+                android:gravity="center"
+                android:text="" />
+
+            <TextView
+                android:id="@+id/tvFinalTest1"
+                android:layout_marginLeft="9dp"
+                android:layout_marginRight="9dp"
+                android:width="90dp"
+                android:gravity="center"
+                android:text="" />
+
+            <TextView
+                android:id="@+id/tvTotal1"
+                android:layout_marginLeft="9dp"
+                android:layout_marginRight="9dp"
+                android:width="90dp"
+                android:gravity="center"
+                android:text="" />
+        </TableRow>
+
+    </TableLayout>
+
+    <TableLayout
+        android:layout_width="410dp"
+        android:layout_height="82dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="1dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="350dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.523"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/spSubject"
+        app:layout_constraintVertical_bias="1.0">
+
+        <TextView
+            android:id="@+id/textView31"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:text="Semester 2"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.074"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.287" />
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center">
+
+            <TextView
+                android:layout_marginLeft="9dp"
+                android:layout_marginRight="9dp"
+                android:width="90dp"
+                android:gravity="center"
+                android:text="Fast Test \n(10%)" />
+
+            <TextView
+                android:layout_marginLeft="9dp"
+                android:layout_marginRight="9dp"
+                android:width="90dp"
+                android:gravity="center"
+                android:text="Middle Test \n(30%)" />
+
+            <TextView
+                android:layout_marginLeft="9dp"
+                android:layout_marginRight="9dp"
+                android:width="90dp"
+                android:gravity="center"
+                android:text="Final Test \n(60%)" />
+
+            <TextView
+                android:layout_marginLeft="9dp"
+                android:layout_marginRight="9dp"
+                android:width="90dp"
+                android:gravity="center"
+                android:text="Total" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/tvFastTest2"
+                android:layout_marginLeft="9dp"
+                android:layout_marginRight="9dp"
+                android:width="90dp"
+                android:gravity="center"
+                android:text="" />
+
+            <TextView
+                android:id="@+id/tvMiddleTest2"
+                android:layout_marginLeft="9dp"
+                android:layout_marginRight="9dp"
+                android:width="90dp"
+                android:gravity="center"
+                android:text="" />
+
+            <TextView
+                android:id="@+id/tvFinalTest2"
+                android:layout_marginLeft="9dp"
+                android:layout_marginRight="9dp"
+                android:width="90dp"
+                android:gravity="center"
+                android:text="" />
+
+            <TextView
+                android:id="@+id/tvTotal2"
+                android:layout_marginLeft="9dp"
+                android:layout_marginRight="9dp"
+                android:width="90dp"
+                android:gravity="center"
+                android:text="" />
+        </TableRow>
+
+    </TableLayout>
+
+
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
