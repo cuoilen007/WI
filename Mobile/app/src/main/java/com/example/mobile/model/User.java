@@ -9,7 +9,7 @@ public class User implements Serializable {
     private String email;
     private String contact;
     private String password;
-    private Long categoryUser;
+    private String categoryUser;
 
     public User(String firstName) {
         this.firstName = firstName;
@@ -65,11 +65,11 @@ public class User implements Serializable {
         this.password = password;
     }
 
-    public Long getCategoryUser() {
+    public String getCategoryUser() {
         return categoryUser;
     }
 
-    public void setCategoryUser(Long categoryUser) {
+    public void setCategoryUser(String categoryUser) {
         this.categoryUser = categoryUser;
     }
 }

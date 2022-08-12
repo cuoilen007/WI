@@ -52,7 +52,7 @@
             android:layout_marginTop="5dp"
             android:hint="First Name"
             app:endIconMode="clear_text"
-            app:startIconDrawable="@drawable/ic_person">
+            app:startIconDrawable="@drawable/ic_baseline_person_24">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
@@ -69,7 +69,7 @@
             android:layout_marginTop="5dp"
             android:hint="Last Name"
             app:endIconMode="clear_text"
-            app:startIconDrawable="@drawable/ic_person">
+            app:startIconDrawable="@drawable/ic_baseline_person_24">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"

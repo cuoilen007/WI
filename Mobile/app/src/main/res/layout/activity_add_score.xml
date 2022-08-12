@@ -31,7 +31,7 @@
                 android:textStyle="bold" />
 
             <Spinner
-                android:id="@+id/spinner"
+                android:id="@+id/a_add_score_sp_test"
                 android:padding="5dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
@@ -51,7 +51,7 @@
                 android:textStyle="bold" />
 
             <Spinner
-                android:id="@+id/spinner2"
+                android:id="@+id/a_add_score_sp_class"
                 android:layout_width="match_parent"
                 android:padding="5dp"
                 android:layout_height="wrap_content" />
@@ -70,34 +70,32 @@
                 android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/ac_class"
+                android:id="@+id/a_add_score_tv_subject"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="5dp"
                 android:text="GDCD"
-                android:textStyle="bold" />
+                android:textStyle="bold"/>
         </LinearLayout>
-
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="502dp"
+        android:layout_height="wrap_content"
         android:layout_margin="5dp"
         android:orientation="vertical">
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:layout_width="match_parent"
-            android:layout_height="504dp" />
-
+        <ListView
+            android:id="@+id/a_add_score_lv_student"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+        </ListView>
+        <Button
+            android:id="@+id/a_add_score_btn_save"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="Save" />
     </LinearLayout>
 
-
-    <Button
-        android:id="@+id/button2"
-        android:layout_width="202dp"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:text="Save" />
 
 </LinearLayout>

@@ -8,6 +8,7 @@ public class StudentData implements Serializable {
     private String StudentName;
     private String userClass;
     private String enrollmentDate;
+    private String docId;
 
     public StudentData() {
     }
@@ -50,5 +51,13 @@ public class StudentData implements Serializable {
 
     public void setEnrollmentDate(String enrollmentDate) {
         this.enrollmentDate = enrollmentDate;
+    }
+
+    public String getDocId() {
+        return docId;
+    }
+
+    public void setDocId(String docId) {
+        this.docId = docId;
     }
 }
