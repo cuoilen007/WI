@@ -33,7 +33,7 @@ public class ListRevisionClassActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_revision_class);
-
+        getActionBar().hide();
         recyclerView=findViewById(R.id.list_extraClass);
         getList();
         recyclerView.setLayoutManager(new LinearLayoutManager(this, RecyclerView.VERTICAL, false));

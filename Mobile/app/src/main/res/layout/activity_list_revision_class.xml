@@ -7,12 +7,28 @@
     android:orientation="vertical"
     tools:context=".activity.ListRevisionClassActivity">
 
-    <Button
-        android:id="@+id/btnCreateExtraClass"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Add new" />
+        android:background="@color/teal_200"
+        android:orientation="horizontal">
 
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="332dp"
+            android:layout_height="wrap_content"
+            android:text="Revision Class List"
+            android:textAlignment="center"
+            android:textSize="30dp" />
+
+        <Button
+            android:id="@+id/btnCreateExtraClass"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.001"
+            android:text="+" />
+
+    </LinearLayout>
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/list_extraClass"
         android:layout_width="match_parent"

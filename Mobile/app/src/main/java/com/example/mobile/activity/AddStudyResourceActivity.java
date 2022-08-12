@@ -12,6 +12,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.mobile.R;
+import com.example.mobile.model.User;
+import com.example.mobile.session.Session;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.CollectionReference;
@@ -34,6 +36,7 @@ public class AddStudyResourceActivity extends AppCompatActivity {
         TextView tvSubject=findViewById(R.id.textSubjectResource);
         String subject=tvSubject.getText().toString();
 
+
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         CollectionReference reference=db.collection("StudyResource");
 
@@ -43,24 +46,27 @@ public class AddStudyResourceActivity extends AppCompatActivity {
                 Map<String,Object> item=new HashMap<>();
                 item.put("link",editLinkUrl.getText().toString());
                 item.put("subject",subject);
-                item.put("teacher","thanh");
-                item.put("topic",editTopic.getText().toString());
-                reference.add(item).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
-                    @Override
-                    public void onSuccess(DocumentReference documentReference) {
-                        Toast.makeText(AddStudyResourceActivity.this,"Add Success! DocumentSnapshot added with ID: " + documentReference.getId(),Toast.LENGTH_SHORT).show();
-                        Intent intent=new Intent(AddStudyResourceActivity.this,ListStudyResourceActivity.class);
-                        startActivity(intent);
-                    }
-                })
-                        .addOnFailureListener(new OnFailureListener() {
-                            @Override
-                            public void onFailure(@NonNull Exception e) {
-                                Toast.makeText(AddStudyResourceActivity.this,"Add Fail!",Toast.LENGTH_SHORT).show();
-                            }
-                        });
-                //  tvSubject.setText("heeee"+subject);
-            }
+                User user= (User) Session.getSession();
+                if (user.getCategoryUser().equals("TEACHER")){
+                    item.put("teacher",user.getFirstName()+" "+user.getLastName());
+                    item.put("topic",editTopic.getText().toString());
+                    reference.add(item).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+                        @Override
+                        public void onSuccess(DocumentReference documentReference) {
+                            Toast.makeText(AddStudyResourceActivity.this,"Add Success! DocumentSnapshot added with ID: " + documentReference.getId(),Toast.LENGTH_SHORT).show();
+                            Intent intent=new Intent(AddStudyResourceActivity.this,ListStudyResourceActivity.class);
+                            startActivity(intent);
+                        }
+                    })
+                            .addOnFailureListener(new OnFailureListener() {
+                                @Override
+                                public void onFailure(@NonNull Exception e) {
+                                    Toast.makeText(AddStudyResourceActivity.this,"Add Fail!",Toast.LENGTH_SHORT).show();
+                                }
+                            });
+                }
+                }
+
         });
     }
 }

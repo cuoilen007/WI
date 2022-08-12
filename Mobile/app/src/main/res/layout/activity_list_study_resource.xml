@@ -7,11 +7,28 @@
     android:orientation="vertical"
     tools:context=".activity.ListStudyResourceActivity">
 
-    <Button
-        android:id="@+id/btnCreateStudyResource"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Add new" />
+        android:background="@color/teal_200"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="332dp"
+            android:layout_height="wrap_content"
+            android:text="Study Resource List"
+            android:textAlignment="center"
+            android:textSize="30dp" />
+
+        <Button
+            android:id="@+id/btnCreateStudyResource"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.001"
+            android:text="+" />
+
+    </LinearLayout>
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/list_StudyResource"
         android:layout_width="match_parent"
