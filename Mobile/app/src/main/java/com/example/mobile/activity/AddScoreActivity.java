@@ -11,24 +11,18 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Spinner;
-import android.widget.SpinnerAdapter;
 import android.widget.TextView;
 
 import com.example.mobile.R;
 import com.example.mobile.adapter.ListStudentAddScoreAdapter;
-import com.example.mobile.fkfirebase.FkFireBase;
 import com.example.mobile.model.Class;
 import com.example.mobile.model.ScoreDetails;
 import com.example.mobile.model.StudentData;
-import com.example.mobile.model.StudyResource;
 import com.example.mobile.model.Test;
-import com.example.mobile.model.User;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
@@ -36,7 +30,6 @@ import com.google.firebase.firestore.QuerySnapshot;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Locale;
 
 public class AddScoreActivity extends AppCompatActivity {
     private FirebaseFirestore db;

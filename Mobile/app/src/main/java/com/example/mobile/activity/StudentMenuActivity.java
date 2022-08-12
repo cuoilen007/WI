@@ -2,6 +2,8 @@ package com.example.mobile.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 import com.example.mobile.R;
+import com.example.mobile.adapter.ViewRevisionClassAdapter;
+import com.example.mobile.adapter.ViewStudyResourceAdapter;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -39,14 +41,16 @@ public class StudentMenuActivity extends AppCompatActivity {
         btnStudyResources.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                Intent intent=new Intent(StudentMenuActivity.this, ViewStudyResourceAdapter.class);
+                startActivity(intent);
             }
         });
 
         btnRevisionClasses.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                Intent intent=new Intent(StudentMenuActivity.this, ViewRevisionClassAdapter.class);
+                startActivity(intent);
             }
         });
 

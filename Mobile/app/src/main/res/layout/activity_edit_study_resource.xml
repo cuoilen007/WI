@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:layout_gravity="center"
     android:background="@color/lightBlueBackground"
-    tools:context=".activity.AddStudyResourceActivity"
+    tools:context=".activity.EditStudyResourceActivity"
     android:focusableInTouchMode="true"
     android:gravity="center">
 

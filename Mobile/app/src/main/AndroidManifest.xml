@@ -14,20 +14,38 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Mobile">
         <activity
+            android:name=".activity.ViewStudyResourceActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.ViewRevisionClassActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.EditRevisionClassActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.AddRevisionClassActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.ListRevisionClassActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.EditStudyResourceActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.ListStudyResourceActivity"
+            android:exported="false" />
+        <activity
             android:name=".activity.AddScoreActivity"
-            android:exported="false">
-        </activity>
+            android:exported="false" />
         <activity
             android:name=".activity.MainActivity"
-            android:exported="false">
-        </activity>
+            android:exported="false" />
         <activity
             android:name=".activity.ViewScoresActivity"
             android:exported="false" />
         <activity
             android:name=".activity.ListScoreActivity"
-            android:exported="false">
-        </activity> <!-- <activity -->
+            android:exported="false" /> <!-- <activity -->
         <!-- android:name=".activity.Student.ViewScoreActivity" -->
         <!-- android:exported="false" /> -->
         <activity
@@ -51,13 +69,14 @@
             android:exported="false" />
         <activity
             android:name=".activity.RegisterActivity"
-            android:exported="false"/>
+            android:exported="false" />
         <activity
             android:name=".activity.LoginActivity"
             android:exported="true"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>

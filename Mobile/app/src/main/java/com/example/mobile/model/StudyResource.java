@@ -2,27 +2,23 @@ package com.example.mobile.model;
 
 import com.google.firebase.database.IgnoreExtraProperties;
 
-@IgnoreExtraProperties
-public class StudyResource {
-    private String name;
-    private String link;
-    private String subjectId;
+import java.io.Serializable;
 
-    public StudyResource(String name, String link, String subjectId) {
-        this.name = name;
-        this.link = link;
-        this.subjectId = subjectId;
-    }
+@IgnoreExtraProperties
+public class StudyResource implements Serializable {
+    private String link;
+    private String subject;
+    private String teacher;
+    private String topic;
 
     public StudyResource() {
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
+    public StudyResource(String link, String subject, String teacher, String topic) {
+        this.link = link;
+        this.subject = subject;
+        this.teacher = teacher;
+        this.topic = topic;
     }
 
     public String getLink() {
@@ -33,11 +29,27 @@ public class StudyResource {
         this.link = link;
     }
 
-    public String getSubjectId() {
-        return subjectId;
+    public String getSubject() {
+        return subject;
     }
 
-    public void setSubjectId(String subjectId) {
-        this.subjectId = subjectId;
+    public void setSubject(String subject) {
+        this.subject = subject;
+    }
+
+    public String getTeacher() {
+        return teacher;
+    }
+
+    public void setTeacher(String teacher) {
+        this.teacher = teacher;
+    }
+
+    public String getTopic() {
+        return topic;
+    }
+
+    public void setTopic(String topic) {
+        this.topic = topic;
     }
 }

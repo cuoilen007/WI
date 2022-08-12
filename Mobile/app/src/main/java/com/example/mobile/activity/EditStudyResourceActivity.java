@@ -12,54 +12,62 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.mobile.R;
+import com.example.mobile.model.StudyResource;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.firebase.firestore.CollectionReference;
-import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.HashMap;
 import java.util.Map;
 
-public class AddStudyResourceActivity extends AppCompatActivity {
+public class EditStudyResourceActivity extends AppCompatActivity {
 
     EditText editTopic,editLinkUrl;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_add_study_resource);
+        setContentView(R.layout.activity_edit_study_resource);
         Button btnAddStudyResource = findViewById(R.id.btnSaveAddStudyResource);
         editTopic = findViewById(R.id.editTopicResource);
         editLinkUrl = findViewById(R.id.editLinkUrl);
         TextView tvSubject=findViewById(R.id.textSubjectResource);
-        String subject=tvSubject.getText().toString();
 
+        //get du lieu tu list qua dialog
+        String key =getIntent().getStringExtra("key");
+        Bundle bundle = getIntent().getExtras();
+        if(bundle == null) {
+            return;
+        }
+        StudyResource studyResource = (StudyResource) bundle.get("objectStudyResource");
+        editTopic.setText(studyResource.getTopic());
+        editLinkUrl.setText(studyResource.getLink());
+        tvSubject.setText(studyResource.getSubject());
         FirebaseFirestore db = FirebaseFirestore.getInstance();
-        CollectionReference reference=db.collection("StudyResource");
 
         btnAddStudyResource.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Map<String,Object> item=new HashMap<>();
                 item.put("link",editLinkUrl.getText().toString());
-                item.put("subject",subject);
+                item.put("subject",tvSubject.getText().toString());
                 item.put("teacher","thanh");
                 item.put("topic",editTopic.getText().toString());
-                reference.add(item).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
-                    @Override
-                    public void onSuccess(DocumentReference documentReference) {
-                        Toast.makeText(AddStudyResourceActivity.this,"Add Success! DocumentSnapshot added with ID: " + documentReference.getId(),Toast.LENGTH_SHORT).show();
-                        Intent intent=new Intent(AddStudyResourceActivity.this,ListStudyResourceActivity.class);
-                        startActivity(intent);
-                    }
-                })
+                db.collection("StudyResource").document(key)
+                        .set(item)
+                        .addOnSuccessListener(new OnSuccessListener<Void>() {
+                            @Override
+                            public void onSuccess(Void aVoid) {
+                                Toast.makeText(getBaseContext(),"Edit Success!",Toast.LENGTH_SHORT).show();
+                                Intent intent=new Intent(EditStudyResourceActivity.this,ListStudyResourceActivity.class);
+                                startActivity(intent);
+                            }
+                        })
                         .addOnFailureListener(new OnFailureListener() {
                             @Override
                             public void onFailure(@NonNull Exception e) {
-                                Toast.makeText(AddStudyResourceActivity.this,"Add Fail!",Toast.LENGTH_SHORT).show();
+                                e.printStackTrace();
                             }
                         });
-                //  tvSubject.setText("heeee"+subject);
             }
         });
     }

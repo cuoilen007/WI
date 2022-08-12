@@ -3,6 +3,18 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/English/W12/Mobile/app/src/main/res/layout/activity_add_revision_class.xml" value="0.36018518518518516" />
+        <entry key="..\:/English/W12/Mobile/app/src/main/res/layout/activity_add_study_resource.xml" value="0.1" />
+        <entry key="..\:/English/W12/Mobile/app/src/main/res/layout/activity_edit_revision_class.xml" value="0.36018518518518516" />
+        <entry key="..\:/English/W12/Mobile/app/src/main/res/layout/activity_edit_study_resource.xml" value="0.11574074074074074" />
+        <entry key="..\:/English/W12/Mobile/app/src/main/res/layout/activity_list_revision_class.xml" value="0.36018518518518516" />
+        <entry key="..\:/English/W12/Mobile/app/src/main/res/layout/activity_list_study_resource.xml" value="0.11574074074074074" />
+        <entry key="..\:/English/W12/Mobile/app/src/main/res/layout/activity_student_menu.xml" value="0.36666666666666664" />
+        <entry key="..\:/English/W12/Mobile/app/src/main/res/layout/activity_teacher_menu.xml" value="0.36666666666666664" />
+        <entry key="..\:/English/W12/Mobile/app/src/main/res/layout/activity_view_revision_class.xml" value="0.36018518518518516" />
+        <entry key="..\:/English/W12/Mobile/app/src/main/res/layout/activity_view_study_resource.xml" value="0.36018518518518516" />
+        <entry key="..\:/English/W12/Mobile/app/src/main/res/layout/extras_class_list_item.xml" value="0.11574074074074074" />
+        <entry key="..\:/English/W12/Mobile/app/src/main/res/layout/view_revision_class_item.xml" value="0.36018518518518516" />
         <entry key="..\:/FPT/WI/WI/Mobile/app/src/main/res/drawable/button_background_blue.xml" value="0.187" />
         <entry key="..\:/FPT/WI/WI/Mobile/app/src/main/res/drawable/ic_register_hero.xml" value="0.187" />
         <entry key="..\:/FPT/WI/WI/Mobile/app/src/main/res/layout/activity_add_study_resource.xml" value="0.4010416666666667" />
