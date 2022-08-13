@@ -41,7 +41,7 @@ public class StudentMenuActivity extends AppCompatActivity {
         btnStudyResources.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent=new Intent(StudentMenuActivity.this, ViewStudyResourceAdapter.class);
+                Intent intent=new Intent(StudentMenuActivity.this, ViewStudyResourceActivity.class);
                 startActivity(intent);
             }
         });
@@ -49,7 +49,7 @@ public class StudentMenuActivity extends AppCompatActivity {
         btnRevisionClasses.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent=new Intent(StudentMenuActivity.this, ViewRevisionClassAdapter.class);
+                Intent intent=new Intent(StudentMenuActivity.this, ViewRevisionClassActivity.class);
                 startActivity(intent);
             }
         });
@@ -57,7 +57,8 @@ public class StudentMenuActivity extends AppCompatActivity {
         btnHelplines.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                Intent intent=new Intent(StudentMenuActivity.this, ContactusActivity.class);
+                startActivity(intent);
             }
         });
     }

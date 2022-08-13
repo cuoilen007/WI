@@ -1,6 +1,7 @@
 package com.example.mobile.activity;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
@@ -19,6 +20,8 @@ import com.example.mobile.model.Class;
 import com.example.mobile.model.ScoreDetails;
 import com.example.mobile.model.StudentData;
 import com.example.mobile.model.Test;
+import com.example.mobile.model.User;
+import com.example.mobile.session.Session;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -52,6 +55,9 @@ public class AddScoreActivity extends AppCompatActivity {
         listView = (ListView) findViewById(R.id.a_add_score_lv_student);
         btnSave = findViewById(R.id.a_add_score_btn_save);
         subject = findViewById(R.id.a_add_score_tv_subject);
+        User user= (User) Session.getSession();
+        subject.setText(user.getSubjectTeach());
+
         db = FirebaseFirestore.getInstance();
         setItemSpClass();
         setItemSpTest();
@@ -163,7 +169,12 @@ public class AddScoreActivity extends AppCompatActivity {
                     .addOnSuccessListener(new OnSuccessListener<Void>() {
                         @Override
                         public void onSuccess(Void aVoid) {
-                            return;
+                            AlertDialog.Builder builder=new AlertDialog.Builder(AddScoreActivity.this);
+                            builder.setIcon(R.drawable.ic_baseline_add_home_work_24);
+                            builder.setTitle("Success");
+                            builder.setMessage("Add Score Successfully!");
+                            builder.create();
+                            builder.show();
                         }
                     })
                     .addOnFailureListener(new OnFailureListener() {

@@ -13,6 +13,8 @@ import android.widget.Button;
 import com.example.mobile.R;
 import com.example.mobile.adapter.RevisionClassAdapter;
 import com.example.mobile.model.RevisionClass;
+import com.example.mobile.model.User;
+import com.example.mobile.session.Session;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -33,7 +35,7 @@ public class ListRevisionClassActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_revision_class);
-        getActionBar().hide();
+        //getActionBar().hide();
         recyclerView=findViewById(R.id.list_extraClass);
         getList();
         recyclerView.setLayoutManager(new LinearLayoutManager(this, RecyclerView.VERTICAL, false));
@@ -49,8 +51,10 @@ public class ListRevisionClassActivity extends AppCompatActivity {
         });
     }
     public void getList(){
+        User user= (User) Session.getSession();
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         db.collection("RevisionClass")
+                .whereEqualTo("teacher", user.getFirstName()+" "+user.getLastName())
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override

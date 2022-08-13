@@ -50,17 +50,17 @@
 
             <Button
                 style="@style/menuButton"
-                android:id="@+id/btnAddStudyResources"
+                android:id="@+id/btnStudyResources"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Add Study Resources" />
+                android:text="Manage Study Resources" />
 
             <Button
                 style="@style/menuButton"
                 android:id="@+id/btnRevisionClasses"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Add Revision Classes" />
+                android:text="Manage Revision Classes" />
         </LinearLayout>
 
 

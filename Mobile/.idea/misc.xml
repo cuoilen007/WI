@@ -8,9 +8,11 @@
         <entry key="..\:/English/W12/Mobile/app/src/main/res/layout/activity_edit_revision_class.xml" value="0.36018518518518516" />
         <entry key="..\:/English/W12/Mobile/app/src/main/res/layout/activity_edit_study_resource.xml" value="0.11574074074074074" />
         <entry key="..\:/English/W12/Mobile/app/src/main/res/layout/activity_list_revision_class.xml" value="0.36018518518518516" />
-        <entry key="..\:/English/W12/Mobile/app/src/main/res/layout/activity_list_study_resource.xml" value="0.11574074074074074" />
+        <entry key="..\:/English/W12/Mobile/app/src/main/res/layout/activity_list_study_resource.xml" value="0.33" />
+        <entry key="..\:/English/W12/Mobile/app/src/main/res/layout/activity_parents_menu.xml" value="0.36666666666666664" />
+        <entry key="..\:/English/W12/Mobile/app/src/main/res/layout/activity_register.xml" value="0.36666666666666664" />
         <entry key="..\:/English/W12/Mobile/app/src/main/res/layout/activity_student_menu.xml" value="0.36666666666666664" />
-        <entry key="..\:/English/W12/Mobile/app/src/main/res/layout/activity_teacher_menu.xml" value="0.36666666666666664" />
+        <entry key="..\:/English/W12/Mobile/app/src/main/res/layout/activity_teacher_menu.xml" value="0.17086834733893558" />
         <entry key="..\:/English/W12/Mobile/app/src/main/res/layout/activity_view_revision_class.xml" value="0.36018518518518516" />
         <entry key="..\:/English/W12/Mobile/app/src/main/res/layout/activity_view_study_resource.xml" value="0.36018518518518516" />
         <entry key="..\:/English/W12/Mobile/app/src/main/res/layout/extras_class_list_item.xml" value="0.11574074074074074" />
