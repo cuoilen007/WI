@@ -87,7 +87,12 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="Academic Progress" />
-
+                    <Button
+                        style="@style/menuButton"
+                        android:id="@+id/btnAnalystic"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Analysis of grades in subjects" />
                     <Button
                         style="@style/menuButton"
                         android:id="@+id/btnStudyResources"

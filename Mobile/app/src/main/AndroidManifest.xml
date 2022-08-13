@@ -14,6 +14,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Mobile">
         <activity
+            android:name=".activity.AnalysticActivity"
+            android:exported="false" />
+        <activity
             android:name=".activity.AcademyProgressActivity"
             android:exported="false" />
 
@@ -78,15 +81,15 @@
         <activity
             android:name=".activity.ParentsMenuActivity"
             android:exported="false"
-            android:theme="@style/AppTheme.CustomThemMenu"/>
+            android:theme="@style/AppTheme.CustomThemMenu" />
         <activity
             android:name=".activity.TeacherMenuActivity"
             android:exported="false"
-            android:theme="@style/AppTheme.CustomThemMenu"/>
+            android:theme="@style/AppTheme.CustomThemMenu" />
         <activity
             android:name=".activity.StudentMenuActivity"
             android:exported="false"
-            android:theme="@style/AppTheme.CustomThemMenu"/>
+            android:theme="@style/AppTheme.CustomThemMenu" />
         <activity
             android:name=".activity.FeedbackActivity"
             android:exported="false" />
@@ -96,7 +99,7 @@
         <activity
             android:name=".activity.RegisterActivity"
             android:exported="false"
-            android:theme="@style/AppTheme.ActionBar"/>
+            android:theme="@style/AppTheme.ActionBar" />
         <activity
             android:name=".activity.LoginActivity"
             android:exported="true"
