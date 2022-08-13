@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:title="n?">
+        <menu>
+            <group android:checkableBehavior="single">
+                <item
+                    android:id="@+id/a_teacher_nav_academic_progress"
+                    android:icon="@drawable/ic_score_24"
+                    android:title="Academic Progress"></item>
+                <item
+                    android:id="@+id/a_teacher_nav_add_study_resources"
+                    android:icon="@drawable/ic_score_24"
+                    android:title="Add Study Resources"></item>
+                <item
+                    android:id="@+id/a_teacher_nav_add_revision_classes"
+                    android:icon="@drawable/ic_baseline_contact_phone_24"
+                    android:title="Add Revision Classes"></item>
+            </group>
+        </menu>
+    </item>
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/a_teacher_nav_logout"
+            android:icon="@drawable/logout_icon"
+            android:title="Logout"></item>
+    </group>
+</menu>

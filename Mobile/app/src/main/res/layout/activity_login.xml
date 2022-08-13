@@ -27,7 +27,7 @@
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="20dp"
         android:layout_marginTop="50dp"
-        android:hint="Username"
+        android:hint="email"
         app:endIconMode="clear_text"
         app:startIconDrawable="@drawable/ic_baseline_person_24">
         <com.google.android.material.textfield.TextInputEditText
@@ -88,11 +88,12 @@
         android:layout_marginTop="50dp"
         android:gravity="center"
         android:orientation="horizontal">
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:fontFamily="@font/baloo"
             android:layout_marginEnd="5dp"
+            android:fontFamily="@font/baloo"
             android:text="Don't have account? "
             android:textSize="16sp" />
 

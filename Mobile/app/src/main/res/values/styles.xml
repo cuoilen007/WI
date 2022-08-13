@@ -31,4 +31,15 @@
         <item name="android:textColor">@color/whiteTextColor</item>
         <item name="android:textStyle">bold</item>
     </style>
+    <style name="AppTheme.CustomThemMenu">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="android:fontFamily">@font/arimo</item>
+        <!-- Color palette -->
+        <!--        <item name="colorPrimaryDark">@color/blue_default</item>-->
+        <item name="android:statusBarColor">#000000</item>
+        <item name="colorPrimary">@color/blue_default</item>
+        <item name="android:textColorPrimary">@color/white</item>
+        <item name="colorError">@color/error_color_material_light</item>
+    </style>
 </resources>
