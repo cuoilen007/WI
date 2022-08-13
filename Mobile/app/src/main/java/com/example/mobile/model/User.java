@@ -14,6 +14,7 @@ public class User implements Serializable {
     private String categoryUser;
     private boolean isCreatedParent;
     private String subjectTeach;
+    private String token;
 
     public User(String firstName) {
         this.firstName = firstName;
@@ -108,5 +109,5 @@ public class User implements Serializable {
     public void setActive(boolean active) {
         isActive = active;
     }
-    
+
 }

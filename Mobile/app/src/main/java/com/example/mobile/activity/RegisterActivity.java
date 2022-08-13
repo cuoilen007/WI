@@ -1,8 +1,11 @@
 package com.example.mobile.activity;
 
+import static android.content.ContentValues.TAG;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.AsyncListUtil;
 
 import android.content.Intent;
 import android.graphics.Color;
@@ -10,8 +13,10 @@ import android.os.Bundle;
 import android.text.Editable;
 import android.text.Spannable;
 import android.text.SpannableString;
+import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.text.style.ForegroundColorSpan;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -29,6 +34,9 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputLayout;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
@@ -41,9 +49,11 @@ public class RegisterActivity extends AppCompatActivity {
     private Button btnRegister;
     private TextView tvLoginHere;
     private FirebaseFirestore db;
+    private FirebaseAuth mAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        mAuth = FirebaseAuth.getInstance();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
         // calling the action bar
@@ -257,6 +267,10 @@ public class RegisterActivity extends AppCompatActivity {
                                     }
                                 }
                             }
+
+                            registerNewUser(etEmail.getEditText().getText().toString(),etPassword.getEditText().getText().toString() );
+
+
                             //create user
                             User user = new User();
                             user.setEmail(etEmail.getEditText().getText().toString());
@@ -298,6 +312,44 @@ public class RegisterActivity extends AppCompatActivity {
         } else {
             return;
         }
+    }
+
+    private void registerNewUser(String email, String password)
+    {
+
+        // create new user or register new user
+        mAuth
+                .createUserWithEmailAndPassword(email, password)
+                .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task)
+                    {
+                        if (task.isSuccessful()) {
+                            Toast.makeText(getApplicationContext(),
+                                    "Registration successful!",
+                                    Toast.LENGTH_LONG)
+                                    .show();
+
+
+                            // if the user created intent to login activity
+                            Intent intent
+                                    = new Intent(RegisterActivity.this,
+                                    MainActivity.class);
+                            startActivity(intent);
+                        }
+                        else {
+
+                            // Registration failed
+                            Toast.makeText(
+                                    getApplicationContext(),
+                                    "Registration failed!!"
+                                            + " Please try again later",
+                                    Toast.LENGTH_LONG)
+                                    .show();
+                        }
+                    }
+                });
     }
 
 }

@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
@@ -15,6 +16,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.mobile.enumm.Roles;
+import com.example.mobile.fkfirebase.FcmNotificationsSender;
 import com.example.mobile.session.Session;
 import com.example.mobile.session.Session.*;
 
@@ -25,10 +27,18 @@ import com.example.mobile.model.User;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputLayout;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.GetTokenResult;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.google.firebase.firestore.local.QueryResult;
+import com.google.firebase.messaging.FirebaseMessaging;
 
 public class LoginActivity extends AppCompatActivity {
     private FirebaseFirestore db;
@@ -38,6 +48,8 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+
         db = FirebaseFirestore.getInstance();
         TextView tvRegister = findViewById(R.id.a_tv_register);
         tvRegister.setOnClickListener(new View.OnClickListener() {
@@ -155,4 +167,32 @@ public class LoginActivity extends AppCompatActivity {
             return true;
         }
     }
+
+//    private void sendNotification(String userid){
+//        FirebaseDatabase.getInstance().getReference().child(userid).child("token").addListenerForSingleValueEvent(
+//                new ValueEventListener() {
+//                    @Override
+//                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+//                        usertoken = snapshot.getValue(String.class);
+//                    }
+//
+//                    @Override
+//                    public void onCancelled(@NonNull DatabaseError error) {
+//
+//                    }
+//                }
+//        );
+//
+//        Handler handler = new Handler();
+//        handler.postDelayed(new Runnable() {
+//            @Override
+//            public void run() {
+//                FcmNotificationsSender notificationsSender = new FcmNotificationsSender(usertoken,"WI", "Test",
+//                        getApplicationContext(), LoginActivity.this);
+//                notificationsSender.SendNotifications();
+//            }
+//        },3000);
+//
+//    }
+
 }
