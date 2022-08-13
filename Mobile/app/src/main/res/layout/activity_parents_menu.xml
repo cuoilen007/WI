@@ -62,7 +62,10 @@
                             android:layout_height="match_parent"
                             android:layout_alignParentLeft="true"
                             android:layout_centerVertical="true"
-                            android:text="Parents/ \nGuardians \nMenu" />
+                            android:text="Parents/ \nGuardians \nMenu"
+                            android:fontFamily="@font/baloo"
+                            android:textSize="22dp"
+                            android:textColor="@color/blue_default"/>
 
                         <ImageView
                             android:layout_width="wrap_content"
@@ -72,27 +75,56 @@
                             android:src="@drawable/ic_register_hero" />
                     </RelativeLayout>
 
-                    <Button
-                        android:id="@+id/btnViewScore"
-                        style="@style/menuButton"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"
-                        android:text="View Score" />
 
-                    <Button
-                        android:id="@+id/btnAcademyProgress"
-                        style="@style/menuButton"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Academic Progress" />
+                <TableLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:stretchColumns="1"
+                    android:shrinkColumns="0"
+                    android:paddingBottom="20dp"
+                    android:paddingTop="20dp">
+                    <TableRow>
+                        <Button
+                            android:id="@+id/btnViewScore"
+                            style="@style/menuButton"
+                            android:layout_width="170dp"
+                            android:layout_height="wrap_content"
+                            android:text="View Score"
+                            android:drawableTop="@drawable/ic_baseline_text_snippet_24"
+                            android:background="@color/blue_default"
+                            android:padding="8dp"
+                            android:layout_margin="8dp"
+                            android:textSize="12dp"/>
 
-                    <Button
-                        android:id="@+id/btnHelplines"
-                        style="@style/menuButton"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Helplines" />
+                        <Button
+                            android:id="@+id/btnAcademyProgress"
+                            style="@style/menuButton"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="8dp"
+                            android:background="@color/blue_default"
+                            android:drawableTop="@drawable/ic_baseline_school_24"
+                            android:padding="8dp"
+                            android:text="Academic Progress"
+                            android:textSize="12dp" />
+
+                    </TableRow>
+                    <TableRow>
+                        <Button
+                            android:id="@+id/btnHelplines"
+                            style="@style/menuButton"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Helplines"
+                            android:drawableTop="@drawable/ic_baseline_help_24"
+                            android:background="@color/blue_default"
+                            android:padding="8dp"
+                            android:layout_margin="8dp"
+                            android:textSize="12dp"/>
+                    </TableRow>
+                </TableLayout>
+
+
 
                     <CheckBox
                         android:id="@+id/checkBox"
