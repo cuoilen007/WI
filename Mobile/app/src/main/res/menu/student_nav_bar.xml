@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/a_student_nav_view_score"
+            android:icon="@drawable/ic_score_24"
+            android:title="View Score"></item>
+    </group>
+    <item android:title="Recharge Wallet">
+        <menu>
+            <group android:checkableBehavior="single">
+                <item
+                    android:id="@+id/a_student_nav_academic_progress"
+                    android:icon="@drawable/ic_score_24"
+                    android:title="Academic Progress"></item>
+                <item
+                    android:id="@+id/a_student_nav_study_resources"
+                    android:icon="@drawable/ic_score_24"
+                    android:title="Study Progress"></item>
+                <item
+                    android:id="@+id/a_student_nav_helplines"
+                    android:icon="@drawable/ic_baseline_contact_phone_24"
+                    android:title="Helplines"></item>
+            </group>
+        </menu>
+    </item>
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/a_student_nav_logout"
+            android:icon="@drawable/logout_icon"
+            android:title="Logout"></item>
+    </group>
+</menu>

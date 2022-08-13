@@ -96,7 +96,7 @@ public class LoginActivity extends AppCompatActivity {
 
     //
     private void login(String email, String password) {
-        if ((!validatePassword()) && (!validateEmail())) {
+        if ((!validatePassword()) || (!validateEmail())) {
             return;
         }
         db.collection("User").whereEqualTo("email", email).whereEqualTo("password", password)
@@ -123,6 +123,7 @@ public class LoginActivity extends AppCompatActivity {
                                             intent = new Intent(LoginActivity.this, TeacherMenuActivity.class);
                                             startActivity(intent);
                                             break;
+                                        default: Toast.makeText(LoginActivity.this, "User name or password invalid!!", Toast.LENGTH_LONG).show();
                                     }
                                     return;
                                 } else {
