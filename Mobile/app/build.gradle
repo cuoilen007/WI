@@ -42,4 +42,6 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
     implementation 'com.google.firebase:firebase-core:16.0.7'
     implementation 'com.google.firebase:firebase-firestore:18.1.0'
+
+    implementation 'com.github.PhilJay:MPAndroidChart:v3.0.2'
 }

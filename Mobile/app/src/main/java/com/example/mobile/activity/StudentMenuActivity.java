@@ -26,7 +26,7 @@ public class StudentMenuActivity extends AppCompatActivity {
         btnViewScore.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(StudentMenuActivity.this, RegisterActivity.class);
+                Intent intent = new Intent(StudentMenuActivity.this, ViewScoresActivity.class);
                 startActivity(intent);
             }
         });
@@ -34,7 +34,8 @@ public class StudentMenuActivity extends AppCompatActivity {
         btnAcademyProgress.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                Intent intent=new Intent(StudentMenuActivity.this, AcademyProgressActivity.class);
+                startActivity(intent);
             }
         });
 
