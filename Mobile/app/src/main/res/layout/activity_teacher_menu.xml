@@ -58,11 +58,14 @@
                         android:layout_height="wrap_content">
 
                         <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
                             android:layout_alignParentLeft="true"
                             android:layout_centerVertical="true"
+                            android:fontFamily="@font/baloo"
                             android:text="Teacher Menu"
-                            android:layout_height="match_parent"
-                            android:layout_width="match_parent"/>
+                            android:textColor="@color/blue_default"
+                            android:textSize="22dp" />
 
                         <ImageView
                             android:layout_width="wrap_content"
@@ -72,26 +75,53 @@
                             android:src="@drawable/ic_register_hero" />
                     </RelativeLayout>
 
-                    <Button
-                        style="@style/menuButton"
-                        android:id="@+id/btnViewScore"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Academic Progress" />
+                <TableLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:stretchColumns="1"
+                    android:shrinkColumns="0"
+                    android:paddingTop="20dp"
+                    android:paddingBottom="20dp">
+                    <TableRow>
+                        <Button
+                            style="@style/menuButton"
+                            android:id="@+id/btnViewScore"
+                            android:layout_width="170dp"
+                            android:layout_height="wrap_content"
+                            android:text="Academic Progress"
+                            android:background="@color/blue_default"
+                            android:drawableTop="@drawable/ic_baseline_school_24"
+                            android:padding="8dp"
+                            android:layout_margin="8dp"
+                            android:textSize="12dp"/>
 
-                    <Button
-                        style="@style/menuButton"
-                        android:id="@+id/btnAddStudyResources"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Add Study Resources" />
+                        <Button
+                            android:id="@+id/btnAddStudyResources"
+                            style="@style/menuButton"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="8dp"
+                            android:background="@color/blue_default"
+                            android:drawableTop="@drawable/ic_baseline_person_add_alt_1_24"
+                            android:padding="8dp"
+                            android:text="Add Study Resources"
+                            android:textSize="12dp" />
+                    </TableRow>
+                    <TableRow>
+                        <Button
+                            style="@style/menuButton"
+                            android:id="@+id/btnRevisionClasses"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Add Revision Classes"
+                            android:background="@color/blue_default"
+                            android:drawableTop="@drawable/ic_baseline_post_add_24"
+                            android:padding="8dp"
+                            android:layout_margin="8dp"
+                            android:textSize="12dp"/>
+                    </TableRow>
+                </TableLayout>
 
-                    <Button
-                        style="@style/menuButton"
-                        android:id="@+id/btnRevisionClasses"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Add Revision Classes" />
                 </LinearLayout>
             </ScrollView>
         </LinearLayout>

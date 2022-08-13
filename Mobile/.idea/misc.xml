@@ -3,6 +3,12 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Aptech/HK4/WI/Mobile/app/src/main/res/drawable/ic_baseline_groups_1_24.xml" value="0.191" />
+        <entry key="..\:/Aptech/HK4/WI/Mobile/app/src/main/res/drawable/ic_baseline_groups_24.xml" value="0.191" />
+        <entry key="..\:/Aptech/HK4/WI/Mobile/app/src/main/res/drawable/ic_baseline_person_add_alt_1_24.xml" value="0.191" />
+        <entry key="..\:/Aptech/HK4/WI/Mobile/app/src/main/res/layout/activity_parents_menu.xml" value="0.25" />
+        <entry key="..\:/Aptech/HK4/WI/Mobile/app/src/main/res/layout/activity_student_menu.xml" value="0.25" />
+        <entry key="..\:/Aptech/HK4/WI/Mobile/app/src/main/res/layout/activity_teacher_menu.xml" value="0.25" />
         <entry key="..\:/English/W12/Mobile/app/src/main/res/layout/activity_academy_progress.xml" value="0.35260416666666666" />
         <entry key="..\:/English/W12/Mobile/app/src/main/res/layout/activity_add_revision_class.xml" value="0.36018518518518516" />
         <entry key="..\:/English/W12/Mobile/app/src/main/res/layout/activity_add_study_resource.xml" value="0.1" />
@@ -25,6 +31,8 @@
         <entry key="..\:/English/W12/Mobile/app/src/main/res/layout/study_resource_list_item.xml" value="0.36666666666666664" />
         <entry key="..\:/English/W12/Mobile/app/src/main/res/layout/view_revision_class_item.xml" value="0.33" />
         <entry key="..\:/English/W12/Mobile/app/src/main/res/layout/view_study_resource_item.xml" value="0.36666666666666664" />
+        <entry key="..\:/English/W20/Mobile/app/src/main/res/layout/activity_analystic.xml" value="0.36666666666666664" />
+        <entry key="..\:/English/W20/Mobile/app/src/main/res/layout/activity_student_menu.xml" value="0.36666666666666664" />
         <entry key="..\:/FPT/WI/WI/Mobile/app/src/main/res/drawable/button_background_blue.xml" value="0.187" />
         <entry key="..\:/FPT/WI/WI/Mobile/app/src/main/res/drawable/ic_register_hero.xml" value="0.187" />
         <entry key="..\:/FPT/WI/WI/Mobile/app/src/main/res/layout/activity_add_study_resource.xml" value="0.4010416666666667" />
