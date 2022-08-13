@@ -3,13 +3,16 @@ package com.example.mobile.model;
 import java.io.Serializable;
 
 public class User implements Serializable {
-    private Long id;
     private String firstName;
     private String lastName;
     private String email;
     private String contact;
     private String password;
+    private String subject;
+    private String childId;
+    private boolean isActive;
     private String categoryUser;
+    private boolean isCreatedParent;
     private String subjectTeach;
     private boolean isActive;
     private String childID;
@@ -18,14 +21,6 @@ public class User implements Serializable {
         this.firstName = firstName;
     }
     public User() {
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
     public String getFirstName() {
@@ -46,6 +41,38 @@ public class User implements Serializable {
 
     public String getEmail() {
         return email;
+    }
+
+    public String getSubject() {
+        return subject;
+    }
+
+    public void setSubject(String subject) {
+        this.subject = subject;
+    }
+
+    public boolean isCreatedParent() {
+        return isCreatedParent;
+    }
+
+    public void setCreatedParent(boolean createdParent) {
+        isCreatedParent = createdParent;
+    }
+
+    public String getChildId() {
+        return childId;
+    }
+
+    public void setChildId(String childId) {
+        this.childId = childId;
+    }
+
+    public boolean isActive() {
+        return isActive;
+    }
+
+    public void setActive(boolean active) {
+        isActive = active;
     }
 
     public void setEmail(String email) {
