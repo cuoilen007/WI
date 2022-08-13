@@ -45,11 +45,27 @@ public class TeacherMenuActivity extends AppCompatActivity implements Navigation
         toggle.syncState();
         navigationView.setNavigationItemSelectedListener(this);
 
-        Button btnAddStudyResources = findViewById(R.id.btnAddStudyResources);
-        btnAddStudyResources.setOnClickListener(new View.OnClickListener() {
+        Button btnStudyResources = findViewById(R.id.btnStudyResources);
+        btnStudyResources.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(TeacherMenuActivity.this, AddStudyResourceActivity.class);
+                Intent intent = new Intent(TeacherMenuActivity.this, ListStudyResourceActivity.class);
+                startActivity(intent);
+            }
+        });
+        Button btnRevisionClass = findViewById(R.id.btnRevisionClasses);
+        btnRevisionClass.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(TeacherMenuActivity.this, ListRevisionClassActivity.class);
+                startActivity(intent);
+            }
+        });
+        Button btnViewScore=findViewById(R.id.btnViewScore);
+        btnViewScore.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(TeacherMenuActivity.this, AddScoreActivity.class);
                 startActivity(intent);
             }
         });

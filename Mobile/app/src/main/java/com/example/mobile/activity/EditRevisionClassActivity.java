@@ -89,8 +89,8 @@ public class EditRevisionClassActivity extends AppCompatActivity {
             public void onClick(View view) {
                 FirebaseFirestore db = FirebaseFirestore.getInstance();
                 Map<String,Object> item=new HashMap<>();
-                item.put("subject","Maths");
-                item.put("teacher","thanh");
+                item.put("subject",revisionClass.getSubject());
+                item.put("teacher",revisionClass.getTeacher());
                 item.put("grade",edtGrade.getText().toString());
                 item.put("startDate",edtStartDate.getText().toString());
                 item.put("endDate",edtEndDate.getText().toString());

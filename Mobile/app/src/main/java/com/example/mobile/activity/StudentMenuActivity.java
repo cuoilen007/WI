@@ -61,7 +61,7 @@ public class StudentMenuActivity extends AppCompatActivity implements Navigation
         btnViewScore.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(StudentMenuActivity.this, RegisterActivity.class);
+                Intent intent = new Intent(StudentMenuActivity.this, ViewScoresActivity.class);
                 startActivity(intent);
             }
         });
@@ -69,14 +69,15 @@ public class StudentMenuActivity extends AppCompatActivity implements Navigation
         btnAcademyProgress.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                Intent intent=new Intent(StudentMenuActivity.this, AcademyProgressActivity.class);
+                startActivity(intent);
             }
         });
 
         btnStudyResources.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent=new Intent(StudentMenuActivity.this, ViewStudyResourceAdapter.class);
+                Intent intent=new Intent(StudentMenuActivity.this, ViewStudyResourceActivity.class);
                 startActivity(intent);
             }
         });
@@ -84,7 +85,7 @@ public class StudentMenuActivity extends AppCompatActivity implements Navigation
         btnRevisionClasses.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent=new Intent(StudentMenuActivity.this, ViewRevisionClassAdapter.class);
+                Intent intent=new Intent(StudentMenuActivity.this, ViewRevisionClassActivity.class);
                 startActivity(intent);
             }
         });
@@ -92,7 +93,8 @@ public class StudentMenuActivity extends AppCompatActivity implements Navigation
         btnHelplines.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                Intent intent=new Intent(StudentMenuActivity.this, ContactusActivity.class);
+                startActivity(intent);
             }
         });
     }

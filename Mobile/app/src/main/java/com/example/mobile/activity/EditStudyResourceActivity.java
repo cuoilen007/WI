@@ -50,14 +50,14 @@ public class EditStudyResourceActivity extends AppCompatActivity {
                 Map<String,Object> item=new HashMap<>();
                 item.put("link",editLinkUrl.getText().toString());
                 item.put("subject",tvSubject.getText().toString());
-                item.put("teacher","thanh");
+                item.put("teacher",studyResource.getTeacher());
                 item.put("topic",editTopic.getText().toString());
                 db.collection("StudyResource").document(key)
                         .set(item)
                         .addOnSuccessListener(new OnSuccessListener<Void>() {
                             @Override
                             public void onSuccess(Void aVoid) {
-                                Toast.makeText(getBaseContext(),"Edit Success!",Toast.LENGTH_SHORT).show();
+                                Toast.makeText(getBaseContext(),"Edit Successfully!",Toast.LENGTH_SHORT).show();
                                 Intent intent=new Intent(EditStudyResourceActivity.this,ListStudyResourceActivity.class);
                                 startActivity(intent);
                             }

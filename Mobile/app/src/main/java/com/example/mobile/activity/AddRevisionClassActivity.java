@@ -1,6 +1,7 @@
 package com.example.mobile.activity;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -12,6 +13,8 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.mobile.R;
+import com.example.mobile.model.User;
+import com.example.mobile.session.Session;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.DocumentReference;
@@ -49,12 +52,13 @@ public class AddRevisionClassActivity extends AppCompatActivity {
         //    ExtraClass extraClass=new ExtraClass("Maths","Thanh",grade,startDate,endDate,sche);
 
         btnSave.setOnClickListener(new View.OnClickListener() {
+            User user= (User) Session.getSession();
             @Override
             public void onClick(View view) {
                 FirebaseFirestore db = FirebaseFirestore.getInstance();
                 Map<String,Object> item=new HashMap<>();
-                item.put("subject","Maths");
-                item.put("teacher","thanh");
+                item.put("subject",user.getSubjectTeach());
+                item.put("teacher",user.getFirstName()+ " "+user.getLastName());
                 item.put("grade",edtGrade.getText().toString());
                 item.put("startDate",edtStartDate.getText().toString());
                 item.put("endDate",edtEndDate.getText().toString());

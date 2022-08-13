@@ -13,6 +13,9 @@ public class User implements Serializable {
     private boolean isActive;
     private String categoryUser;
     private boolean isCreatedParent;
+    private String subjectTeach;
+    private boolean isActive;
+    private String childID;
 
     public User(String firstName) {
         this.firstName = firstName;
@@ -98,5 +101,29 @@ public class User implements Serializable {
 
     public void setCategoryUser(String categoryUser) {
         this.categoryUser = categoryUser;
+    }
+
+    public String getSubjectTeach() {
+        return subjectTeach;
+    }
+
+    public void setSubjectTeach(String subjectTeach) {
+        this.subjectTeach = subjectTeach;
+    }
+
+    public boolean isActive() {
+        return isActive;
+    }
+
+    public void setActive(boolean active) {
+        isActive = active;
+    }
+
+    public String getChildID() {
+        return childID;
+    }
+
+    public void setChildID(String childID) {
+        this.childID = childID;
     }
 }

@@ -34,9 +34,9 @@ public class AddStudyResourceActivity extends AppCompatActivity {
         editTopic = findViewById(R.id.editTopicResource);
         editLinkUrl = findViewById(R.id.editLinkUrl);
         TextView tvSubject=findViewById(R.id.textSubjectResource);
+        User user= (User) Session.getSession();
+        tvSubject.setText(user.getSubjectTeach());
         String subject=tvSubject.getText().toString();
-
-
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         CollectionReference reference=db.collection("StudyResource");
 
@@ -46,7 +46,6 @@ public class AddStudyResourceActivity extends AppCompatActivity {
                 Map<String,Object> item=new HashMap<>();
                 item.put("link",editLinkUrl.getText().toString());
                 item.put("subject",subject);
-                User user= (User) Session.getSession();
                 if (user.getCategoryUser().equals("TEACHER")){
                     item.put("teacher",user.getFirstName()+" "+user.getLastName());
                     item.put("topic",editTopic.getText().toString());
