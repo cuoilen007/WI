@@ -57,7 +57,7 @@ public class StudentMenuActivity extends AppCompatActivity implements Navigation
         Button btnStudyResources = findViewById(R.id.btnStudyResources);
         Button btnRevisionClasses = findViewById(R.id.btnRevisionClasses);
         Button btnHelplines = findViewById(R.id.btnHelplines);
-
+        Button btnAnalystic=findViewById(R.id.btnAnalystic);
         btnViewScore.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -94,6 +94,13 @@ public class StudentMenuActivity extends AppCompatActivity implements Navigation
             @Override
             public void onClick(View view) {
                 Intent intent=new Intent(StudentMenuActivity.this, ContactusActivity.class);
+                startActivity(intent);
+            }
+        });
+        btnAnalystic.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(StudentMenuActivity.this, AnalysticActivity.class);
                 startActivity(intent);
             }
         });
