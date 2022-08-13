@@ -39,6 +39,7 @@ public class ViewRevisionClassAdapter extends RecyclerView.Adapter<ViewRevisionC
         RevisionClass revisionClass =list.get(position);
         holder.txtTeacher.setText(revisionClass.getTeacher());
         holder.txtSubject.setText(revisionClass.getSubject());
+        holder.txtGrade.setText(revisionClass.getGrade());
         holder.txtStartDate.setText(revisionClass.getStartDate());
         holder.txtEndDate.setText(revisionClass.getEndDate());
         holder.txtSchedule.setText(revisionClass.getSchedule());
@@ -51,16 +52,16 @@ public class ViewRevisionClassAdapter extends RecyclerView.Adapter<ViewRevisionC
 
     public class ViewHolder extends RecyclerView.ViewHolder
     {
-        TextView txtTeacher,txtSubject,txtStartDate,txtEndDate,txtSchedule;
+        TextView txtTeacher,txtSubject,txtStartDate,txtEndDate,txtSchedule,txtGrade;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            txtTeacher=itemView.findViewById(R.id.extrasclass_item_teacher);
-            txtSubject=itemView.findViewById(R.id.extrasclass_item_subject);
-            txtStartDate=itemView.findViewById(R.id.extrasclass_item_startDate);
-            txtEndDate=itemView.findViewById(R.id.extrasclass_item_endDate);
-            txtSchedule=itemView.findViewById(R.id.extrasclass_item_schedule);
-
+            txtTeacher=itemView.findViewById(R.id.View_Revision_class_item_teacher);
+            txtSubject=itemView.findViewById(R.id.View_Revision_class_item_subject);
+            txtGrade=itemView.findViewById(R.id.View_Revision_class_item_grade);
+            txtStartDate=itemView.findViewById(R.id.View_Revision_class_item_startDate);
+            txtEndDate=itemView.findViewById(R.id.View_Revision_class_item_endDate);
+            txtSchedule=itemView.findViewById(R.id.View_Revision_class_item_schedule);
 
         }
 

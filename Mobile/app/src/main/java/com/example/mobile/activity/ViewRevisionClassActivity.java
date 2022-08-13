@@ -3,6 +3,7 @@ package com.example.mobile.activity;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
@@ -26,12 +27,12 @@ public class ViewRevisionClassActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.view_revision_class_item);
+        setContentView(R.layout.activity_view_revision_class);
 
         recyclerView=findViewById(R.id.list_view_revision_class);
         getList();
-        GridLayoutManager gridLayoutManager=new GridLayoutManager(this,2);
-        recyclerView.setLayoutManager(gridLayoutManager);
+        //GridLayoutManager gridLayoutManager=new GridLayoutManager(this,2);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
         adapter=new ViewRevisionClassAdapter(revisionClassList,this);
         recyclerView.setAdapter(adapter);
     }

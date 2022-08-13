@@ -35,6 +35,7 @@ import java.util.List;
 public class AcademyProgressActivity extends AppCompatActivity implements OnChartValueSelectedListener {
 
     private CombinedChart mChart;
+    List<String> testList = new ArrayList<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,7 +57,6 @@ public class AcademyProgressActivity extends AppCompatActivity implements OnChar
         leftAxis.setDrawGridLines(false);
         leftAxis.setAxisMinimum(0f);
 
-       final List<String> xLabel = new ArrayList<>();
         FirebaseFirestore  db = FirebaseFirestore.getInstance();
         db.collection("Test")
                 .get()
@@ -65,15 +65,33 @@ public class AcademyProgressActivity extends AppCompatActivity implements OnChar
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
                         if (task.isSuccessful()) {
                             for (QueryDocumentSnapshot document : task.getResult()) {
-                                Test item = (Test) document.toObject(Test.class);
+                                Test item =document.toObject(Test.class);
                                 //listClass.add(item);
-                                xLabel.add(item.getTestname());
+                                testList.add(item.getTestname());
                             }
                         } else {
                             //Log.w(TAG, "Error getting documents.", task.getException());
                         }
                     }
                 });
+
+        final List<String> xLabel = new ArrayList<>();
+        for (String s:testList){
+            xLabel.add(s);
+        }
+        xLabel.add("Jan");
+        xLabel.add("Feb");
+        xLabel.add("Mar");
+        xLabel.add("Apr");
+        xLabel.add("May");
+        xLabel.add("Jun");
+        xLabel.add("Jul");
+        xLabel.add("Aug");
+        xLabel.add("Sep");
+        xLabel.add("Oct");
+        xLabel.add("Nov");
+        xLabel.add("Dec");
+
 
         XAxis xAxis = mChart.getXAxis();
         xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);

@@ -32,12 +32,11 @@ public class ViewStudyResourceActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.view_study_resource_item);
+        setContentView(R.layout.activity_view_study_resource);
 
         recyclerView=findViewById(R.id.list_view_study_resource);
         getList();
-        GridLayoutManager gridLayoutManager=new GridLayoutManager(this,2);
-        recyclerView.setLayoutManager(gridLayoutManager);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
         adapter=new ViewStudyResourceAdapter(studyResources,this);
         recyclerView.setAdapter(adapter);
 
