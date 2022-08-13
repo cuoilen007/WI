@@ -90,7 +90,7 @@
                             android:layout_height="wrap_content"
                             android:text="View Score"
                             android:drawableTop="@drawable/ic_baseline_text_snippet_24"
-                            android:background="@color/blue_default"
+                            android:background="@drawable/gradient_color"
                             android:padding="8dp"
                             android:layout_margin="8dp"
                             android:textSize="12dp"/>
@@ -101,7 +101,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_margin="8dp"
-                            android:background="@color/blue_default"
+                            android:background="@drawable/gradient_color"
                             android:drawableTop="@drawable/ic_baseline_school_24"
                             android:padding="8dp"
                             android:text="Academic Progress"
@@ -116,7 +116,7 @@
                             android:layout_height="wrap_content"
                             android:text="Study Resources"
                             android:drawableTop="@drawable/ic_baseline_menu_book_24"
-                            android:background="@color/blue_default"
+                            android:background="@drawable/gradient_color"
                             android:padding="8dp"
                             android:layout_margin="8dp"
                             android:textSize="12dp"/>
@@ -128,7 +128,7 @@
                             android:layout_height="wrap_content"
                             android:text="Revision Classes"
                             android:drawableTop="@drawable/ic_baseline_groups_1_24"
-                            android:background="@color/blue_default"
+                            android:background="@drawable/gradient_color"
                             android:padding="8dp"
                             android:layout_margin="8dp"
                             android:textSize="12dp"/>
@@ -141,17 +141,13 @@
                             android:layout_height="wrap_content"
                             android:text="Helplines"
                             android:drawableTop="@drawable/ic_baseline_help_24"
-                            android:background="@color/blue_default"
+                            android:background="@drawable/gradient_color"
                             android:padding="8dp"
                             android:layout_margin="8dp"
                             android:textSize="12dp"/>
                     </TableRow>
                 </TableLayout>
-
-
                 </LinearLayout>
-
-
             </ScrollView>
 <!--            <fragment-->
 <!--                android:id="@+id/map"-->
