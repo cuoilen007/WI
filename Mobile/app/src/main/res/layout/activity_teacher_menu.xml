@@ -27,11 +27,14 @@
                 android:layout_height="wrap_content">
 
                 <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
                     android:layout_alignParentLeft="true"
                     android:layout_centerVertical="true"
+                    android:fontFamily="@font/baloo"
                     android:text="Teacher Menu"
-                    android:layout_height="match_parent"
-                    android:layout_width="match_parent"/>
+                    android:textColor="@color/blue_default"
+                    android:textSize="20dp" />
 
                 <ImageView
                     android:layout_width="wrap_content"
@@ -41,32 +44,54 @@
                     android:src="@drawable/ic_register_hero" />
             </RelativeLayout>
 
-            <Button
-                style="@style/menuButton"
-                android:id="@+id/btnViewScore"
-                android:layout_width="match_parent"
+            <TableLayout
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Academic Progress" />
+                android:paddingTop="20dp"
+                android:paddingBottom="20dp"
+                android:shrinkColumns="0"
+                android:stretchColumns="1">
 
-            <Button
-                style="@style/menuButton"
-                android:id="@+id/btnAddStudyResources"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Add Study Resources" />
+                <TableRow>
 
-            <Button
-                style="@style/menuButton"
-                android:id="@+id/btnRevisionClasses"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Add Revision Classes" />
+                    <Button
+                        android:id="@+id/btnViewScore"
+                        style="@style/menuButton"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="8dp"
+                        android:drawableTop="@drawable/ic_baseline_school_24"
+                        android:padding="5dp"
+                        android:text="Academic Progress"
+                        android:textSize="10dp" />
+
+                    <Button
+                        android:id="@+id/btnAddStudyResources"
+                        style="@style/menuButton"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="8dp"
+                        android:drawableTop="@drawable/ic_baseline_person_add_24"
+                        android:padding="5dp"
+                        android:text="Add Study Resources"
+                        android:textSize="10dp" />
+                </TableRow>
+
+                <TableRow>
+
+                    <Button
+                        android:id="@+id/btnRevisionClasses"
+                        style="@style/menuButton"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="8dp"
+                        android:drawableTop="@drawable/ic_baseline_playlist_add_24"
+                        android:padding="5dp"
+                        android:text="Add Revision Classes"
+                        android:textSize="10dp" />
+                </TableRow>
+            </TableLayout>
+
         </LinearLayout>
-
-
     </ScrollView>
-
-
-
-
 </RelativeLayout>

@@ -19,7 +19,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Feedback"
-            android:textSize="40dp"
+            android:textSize="42dp"
+            android:textColor="@color/blue_default"
             android:textStyle="bold" />
     </LinearLayout>
 
@@ -104,7 +105,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:layout_marginLeft="5dp"
-            android:background="@drawable/round_button"
+            android:background="@drawable/gradient_color"
+            android:textColor="@color/white"
             android:text="Submit" />
 
     </LinearLayout>
