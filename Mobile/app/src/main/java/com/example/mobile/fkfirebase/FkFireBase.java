@@ -94,6 +94,7 @@ public final class FkFireBase<T> {
                 if (task.isSuccessful()) {
                     DocumentSnapshot document = task.getResult();
                     t = (T) document.toObject(Tclass);
+
                 }
             }
         });
