@@ -13,6 +13,8 @@ import android.widget.Button;
 import com.example.mobile.R;
 import com.example.mobile.adapter.StudyResourceAdapter;
 import com.example.mobile.model.StudyResource;
+import com.example.mobile.model.User;
+import com.example.mobile.session.Session;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -33,7 +35,7 @@ public class ListStudyResourceActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_study_resource);
-        getActionBar().hide();
+        //getActionBar().hide();
         recyclerView=findViewById(R.id.list_StudyResource);
         getList();
         recyclerView.setLayoutManager(new LinearLayoutManager(this, RecyclerView.VERTICAL, false));
@@ -53,7 +55,9 @@ public class ListStudyResourceActivity extends AppCompatActivity {
     }
     public void getList(){
         FirebaseFirestore db = FirebaseFirestore.getInstance();
+        User user= (User) Session.getSession();
         db.collection("StudyResource")
+                .whereEqualTo("teacher", user.getFirstName()+" "+user.getLastName())
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override
