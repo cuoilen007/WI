@@ -8,14 +8,16 @@ import android.widget.TextView;
 
 import com.example.mobile.R;
 import com.example.mobile.model.StudentData;
+import com.example.mobile.model.User;
 
 import java.time.format.DateTimeFormatter;
+import java.util.HashMap;
 import java.util.List;
 
 public class ListStudentAddScoreAdapter extends BaseAdapter {
-    private List<StudentData> studentData;
+    private List<User> studentData;
     private Activity context;
-    public ListStudentAddScoreAdapter(Activity context, List<StudentData> studentData) {
+    public ListStudentAddScoreAdapter(Activity context, List<User> studentData) {
         this.studentData = studentData;
         this.context = context;
     }
@@ -38,7 +40,7 @@ public class ListStudentAddScoreAdapter extends BaseAdapter {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         // Get the data item for this position
-        StudentData item = studentData.get(position);
+        User item = studentData.get(position);
         // Check if an existing view is being reused, otherwise inflate the view
         View viewContact;
         if (convertView == null){
@@ -48,8 +50,10 @@ public class ListStudentAddScoreAdapter extends BaseAdapter {
         }
         TextView tvStudentName = (TextView) viewContact.findViewById(R.id.add_score_item_tv_student_name);
         TextView etStudentScore = (TextView) viewContact.findViewById(R.id.add_score_item_tv_student_score);
+        TextView tvEmail = (TextView) viewContact.findViewById(R.id.add_score_item_tv_student_email);
         //set text
-        tvStudentName.setText(item.getStudentName().toString());
+        tvEmail.setText(item.getEmail());
+        tvStudentName.setText(item.getLastName());
         return viewContact;
     }
 }

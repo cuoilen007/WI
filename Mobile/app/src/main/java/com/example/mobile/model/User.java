@@ -22,7 +22,6 @@ public class User implements Serializable {
     public void setClassed(String classed) {
         this.classed = classed;
     }
-
     private String classed;
     //private String token;
 
@@ -112,4 +111,11 @@ public class User implements Serializable {
         isActive = active;
     }
 
+    public String getClassed() {
+        return classed;
+    }
+
+    public void setClassed(String classed) {
+        this.classed = classed;
+    }
 }

@@ -34,8 +34,11 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
+import org.w3c.dom.Text;
+
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 public class AddScoreActivity extends AppCompatActivity {
@@ -47,7 +50,7 @@ public class AddScoreActivity extends AppCompatActivity {
     private List<Class> listClass;
     private ListStudentAddScoreAdapter adapter;
     private TextView subject;
-    List<StudentData> list;
+    List<User> list;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,7 +62,7 @@ public class AddScoreActivity extends AppCompatActivity {
         listView = (ListView) findViewById(R.id.a_add_score_lv_student);
         btnSave = findViewById(R.id.a_add_score_btn_save);
         subject = findViewById(R.id.a_add_score_tv_subject);
-        User user= (User) Session.getSession();
+        User user = (User) Session.getSession();
         subject.setText(user.getSubjectTeach());
 
         db = FirebaseFirestore.getInstance();
@@ -78,8 +81,29 @@ public class AddScoreActivity extends AppCompatActivity {
 
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                if (!validateSpTest() && !validateSpTest()){
+                    listView.setAdapter(null);
+                    return;
+                }
                 String text = spClass.getSelectedItem().toString();
-                loadListStudent("userClass", text);
+                loadListStudent("classed", text);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+        spTest.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                if (!validateSpTest() && !validateSpTest()){
+                    listView.setAdapter(null);
+                    return;
+                }
+                String text = spClass.getSelectedItem().toString();
+                loadListStudent("classed", text);
             }
 
             @Override
@@ -89,26 +113,59 @@ public class AddScoreActivity extends AppCompatActivity {
         });
     }
 
+    HashMap<String, String> hDocId;
+
     private void loadListStudent(String field, Object value) {
         list = new ArrayList<>();
-        db.collection("StudentData").whereEqualTo(field, value)
+        hDocId = new HashMap<>();
+        db.collection("User").whereEqualTo(field, value).whereEqualTo("categoryUser", "STUDENT")
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
                         if (task.isSuccessful()) {
                             for (QueryDocumentSnapshot document : task.getResult()) {
-                                StudentData user = (StudentData) document.toObject(StudentData.class);
-                                user.setDocId(document.getId());
+                                int i = 0;
+                                User user = (User) document.toObject(User.class);
+                                hDocId.put(user.getEmail(), document.getId());
                                 list.add(user);
+                                i++;
                             }
                             adapter = new ListStudentAddScoreAdapter(AddScoreActivity.this, list);
                             listView.setAdapter(adapter);
+                            loadScore();
                         } else {
                             //Log.w(TAG, "Error getting documents.", task.getException());
                         }
                     }
                 });
+    }
+    private void loadScore(){
+        for (String key : hDocId.keySet()){
+            db.collection("ScoreDetails").whereEqualTo("studentid", hDocId.get(key)).whereEqualTo("testname", spTest.getSelectedItem().toString()).whereEqualTo("subjectName", ((User)Session.getSession()).getSubjectTeach())
+                    .get()
+                    .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                        @Override
+                        public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                            if (task.isSuccessful()) {
+                                for (QueryDocumentSnapshot document : task.getResult()) {
+                                    ScoreDetails scoreDetails = (ScoreDetails) document.toObject(ScoreDetails.class);
+                                    for (int i = 0; i < listView.getCount(); i++) {
+                                        View v = listView.getChildAt(i);
+                                        EditText et = (EditText) v.findViewById(R.id.add_score_item_tv_student_score);
+                                        TextView tv = (TextView) v.findViewById(R.id.add_score_item_tv_student_email);
+                                        if (tv.getText().equals(key)){
+                                            et.setText(String.valueOf(scoreDetails.getScoreReceived()));
+                                            break;
+                                        }
+                                    }
+                                }
+                            } else {
+                                //Log.w(TAG, "Error getting documents.", task.getException());
+                            }
+                        }
+                    });
+        }
     }
 
     private void setItemSpClass() {
@@ -133,6 +190,7 @@ public class AddScoreActivity extends AppCompatActivity {
                     }
                 });
     }
+
     private void setItemSpTest() {
         List<String> listItemSpTest = new ArrayList<String>() {
         };
@@ -156,41 +214,110 @@ public class AddScoreActivity extends AppCompatActivity {
                 });
     }
 
+    int call = 0;
+    int i = 0;
+    int call1 = 0;
+
     private void submit() {
-        for (StudentData item : list) {
-            int i = 0;
-            View v = listView.getChildAt(i);
-            EditText score = (EditText) v.findViewById(R.id.add_score_item_tv_student_score);
-            ScoreDetails scoreDetails = new ScoreDetails();
-            scoreDetails.setTestname(spTest.getSelectedItem().toString());
-            scoreDetails.setClassName(spClass.getSelectedItem().toString());
-            scoreDetails.setSubjectName(subject.getText().toString());
-            scoreDetails.setDate((LocalDate.now()).toString());
-            scoreDetails.setScoreReceived(Integer.valueOf(score.getText().toString()));
-            scoreDetails.setStudentid(item.getDocId());
-            db.collection("ScoreDetails").document()
-                    .set(scoreDetails)
-                    .addOnSuccessListener(new OnSuccessListener<Void>() {
+        if (!validateSpTest() || !validateSpTest()){
+            return;
+        }
+        call = 0;
+        for (User item : list) {
+            //find
+            db.collection("ScoreDetails").whereEqualTo("studentid", hDocId.get(item.getEmail())).whereEqualTo("testname",spTest.getSelectedItem().toString())
+                    .get()
+                    .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                         @Override
-                        public void onSuccess(Void aVoid) {
-                            AlertDialog.Builder builder=new AlertDialog.Builder(AddScoreActivity.this);
-                            builder.setIcon(R.drawable.ic_baseline_add_home_work_24);
-                            builder.setTitle("Success");
-                            builder.setMessage("Add Score Successfully!");
-                            builder.create();
-                            builder.show();
-                        }
-                    })
-                    .addOnFailureListener(new OnFailureListener() {
-                        @Override
-                        public void onFailure(@NonNull Exception e) {
-                            e.printStackTrace();
+                        public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                            if (task.isSuccessful()) {
+                                View v = listView.getChildAt(call);
+                                for (QueryDocumentSnapshot document : task.getResult()) {
+                                    ScoreDetails item = (ScoreDetails) document.toObject(ScoreDetails.class);
+                                    //add
+                                    if (item != null) {
+                                        call1 = 1;
+                                        EditText score = (EditText) v.findViewById(R.id.add_score_item_tv_student_score);
+                                        item.setDate((LocalDate.now()).toString());
+                                        item.setScoreReceived(Integer.valueOf(score.getText().toString()));
+                                        db.collection("ScoreDetails").document(document.getId())
+                                                .set(item)
+                                                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                                                    @Override
+                                                    public void onSuccess(Void aVoid) {
+//                                                        AlertDialog builder = new AlertDialog.Builder(AddScoreActivity.this).create();
+//                                                        builder.setIcon(R.drawable.ic_baseline_add_home_work_24);
+//                                                        builder.setTitle("Success");
+//                                                        builder.setMessage("Add Score Successfully!");
+//                                                        builder.show();
+                                                    }
+                                                })
+                                                .addOnFailureListener(new OnFailureListener() {
+                                                    @Override
+                                                    public void onFailure(@NonNull Exception e) {
+                                                        e.printStackTrace();
+                                                    }
+                                                });
+                                        call++;
+                                    }
+                                }
+                                if (call1 == 0) {
+                                    EditText score = (EditText) v.findViewById(R.id.add_score_item_tv_student_score);
+                                    TextView email = (TextView) v.findViewById(R.id.add_score_item_tv_student_email);
+                                    ScoreDetails scoreDetails = new ScoreDetails();
+                                    scoreDetails.setTestname(spTest.getSelectedItem().toString());
+                                    scoreDetails.setClassName(spClass.getSelectedItem().toString());
+                                    scoreDetails.setSubjectName(subject.getText().toString());
+                                    scoreDetails.setDate((LocalDate.now()).toString());
+                                    scoreDetails.setScoreReceived(Integer.valueOf(score.getText().toString()));
+                                    scoreDetails.setStudentid(hDocId.get(email.getText().toString()));
+                                    db.collection("ScoreDetails").document()
+                                            .set(scoreDetails)
+                                            .addOnSuccessListener(new OnSuccessListener<Void>() {
+                                                @Override
+                                                public void onSuccess(Void aVoid) {
+//                                                    AlertDialog builder = new AlertDialog.Builder(AddScoreActivity.this).create();
+//                                                    builder.setIcon(R.drawable.ic_baseline_add_home_work_24);
+//                                                    builder.setTitle("Success");
+//                                                    builder.setMessage("Add Score Successfully!");
+//                                                    builder.show();
+                                                }
+                                            })
+                                            .addOnFailureListener(new OnFailureListener() {
+                                                @Override
+                                                public void onFailure(@NonNull Exception e) {
+                                                    e.printStackTrace();
+                                                }
+                                            });
+                                    call++;
+                                }
+
+                                call1 = 0;
+                            }
                         }
                     });
             i++;
         }
-
-
-   }
+        //end for
+        AlertDialog builder = new AlertDialog.Builder(AddScoreActivity.this).create();
+        builder.setIcon(R.drawable.ic_baseline_add_home_work_24);
+        builder.setTitle("Success");
+        builder.setMessage("Add Score Successfully!");
+        builder.show();
+    }
+    private boolean validateSpTest(){
+        if (spTest.getSelectedItem().toString().equals("Select Test")){
+            return false;
+        }else{
+            return true;
+        }
+    }
+    private boolean validateSpClass(){
+        if (spClass.getSelectedItem().toString().equals("Select Test")){
+            return false;
+        }else{
+            return true;
+        }
+    }
 
 }
