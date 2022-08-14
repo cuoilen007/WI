@@ -104,7 +104,7 @@
                             android:background="@color/blue_default"
                             android:drawableTop="@drawable/ic_baseline_person_add_alt_1_24"
                             android:padding="8dp"
-                            android:text="Add Study Resources"
+                            android:text="Study Resources"
                             android:textSize="12dp" />
                     </TableRow>
                     <TableRow>
@@ -113,7 +113,7 @@
                             android:id="@+id/btnRevisionClasses"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="Add Revision Classes"
+                            android:text="Revision Classes"
                             android:background="@color/blue_default"
                             android:drawableTop="@drawable/ic_baseline_post_add_24"
                             android:padding="8dp"

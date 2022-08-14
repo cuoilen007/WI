@@ -45,7 +45,7 @@ public class TeacherMenuActivity extends AppCompatActivity implements Navigation
         toggle.syncState();
         navigationView.setNavigationItemSelectedListener(this);
 
-        Button btnStudyResources = findViewById(R.id.btnStudyResources);
+        Button btnStudyResources = findViewById(R.id.btnAddStudyResources);
         btnStudyResources.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

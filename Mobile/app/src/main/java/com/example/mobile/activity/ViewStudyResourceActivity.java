@@ -1,13 +1,19 @@
 package com.example.mobile.activity;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
+import android.text.Spannable;
+import android.text.SpannableString;
+import android.text.style.ForegroundColorSpan;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
@@ -33,6 +39,15 @@ public class ViewStudyResourceActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_study_resource);
+
+        ActionBar actionBar = getSupportActionBar();
+        // showing the back button in action bar
+        actionBar.setDisplayHomeAsUpEnabled(true);
+        // Title Bar
+        actionBar.setTitle("");
+        Spannable text = new SpannableString(actionBar.getTitle());
+        text.setSpan(new ForegroundColorSpan(Color.WHITE), 0, text.length(), Spannable.SPAN_INCLUSIVE_INCLUSIVE);
+        actionBar.setTitle(text);
 
         recyclerView=findViewById(R.id.list_view_study_resource);
         getList();
@@ -60,5 +75,11 @@ public class ViewStudyResourceActivity extends AppCompatActivity {
                         }
                     }
                 });
+    }
+    //back
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        super.onBackPressed();
+        return true;
     }
 }

@@ -145,6 +145,17 @@
                             android:padding="8dp"
                             android:layout_margin="8dp"
                             android:textSize="12dp"/>
+                        <Button
+                            style="@style/menuButton"
+                            android:id="@+id/btnAnalystic"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Analys"
+                            android:drawableTop="@drawable/ic_baseline_help_24"
+                            android:background="@color/blue_default"
+                            android:padding="8dp"
+                            android:layout_margin="8dp"
+                            android:textSize="12dp"/>
                     </TableRow>
                 </TableLayout>
 

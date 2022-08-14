@@ -16,16 +16,15 @@
         <TextView
             android:id="@+id/textView"
             android:layout_width="332dp"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:text="Study Resource List"
             android:textAlignment="center"
-            android:textSize="30dp" />
+            android:textSize="28dp" />
 
         <Button
-            android:id="@+id/btnCreateStudyResource"
+            android:id="@+id/btn_Create_Study_Resource"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="0.001"
             android:text="+" />
 
     </LinearLayout>

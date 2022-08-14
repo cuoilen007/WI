@@ -35,14 +35,13 @@ public class ListStudyResourceActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_study_resource);
-        //getActionBar().hide();
         recyclerView=findViewById(R.id.list_StudyResource);
         getList();
         recyclerView.setLayoutManager(new LinearLayoutManager(this, RecyclerView.VERTICAL, false));
         adapter=new StudyResourceAdapter(studyResources,keySet,this);
         recyclerView.setAdapter(adapter);
 
-        btnCreate=findViewById(R.id.btnCreateStudyResource);
+        btnCreate=findViewById(R.id.btn_Create_Study_Resource);
         btnCreate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

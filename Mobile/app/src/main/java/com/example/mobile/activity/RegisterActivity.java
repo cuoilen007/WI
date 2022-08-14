@@ -281,7 +281,7 @@ public class RegisterActivity extends AppCompatActivity {
                             user.setCategoryUser(actRole.getText().toString().toUpperCase());
                             user.setCreatedParent(false);
                             user.setPassword(etPassword.getEditText().getText().toString());
-                            user.setSubject("");
+                            user.setSubjectTeach("");
                             user.setChildId("");
                             db.collection("User").document()
                                     .set(user)

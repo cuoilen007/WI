@@ -8,13 +8,13 @@ public class User implements Serializable {
     private String email;
     private String contact;
     private String password;
-    private String subject;
+   // private String subject;
     private String childId;
     private boolean isActive;
     private String categoryUser;
     private boolean isCreatedParent;
     private String subjectTeach;
-    private String token;
+    //private String token;
 
     public User(String firstName) {
         this.firstName = firstName;
@@ -40,14 +40,6 @@ public class User implements Serializable {
 
     public String getEmail() {
         return email;
-    }
-
-    public String getSubject() {
-        return subject;
-    }
-
-    public void setSubject(String subject) {
-        this.subject = subject;
     }
 
     public boolean isCreatedParent() {
