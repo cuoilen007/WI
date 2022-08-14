@@ -7,6 +7,7 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
@@ -19,6 +20,7 @@ import android.widget.TextView;
 
 import com.example.mobile.R;
 import com.example.mobile.adapter.ListStudentAddScoreAdapter;
+import com.example.mobile.fkfirebase.FcmNotificationsSender;
 import com.example.mobile.model.Class;
 import com.example.mobile.model.ScoreDetails;
 import com.example.mobile.model.StudentData;
@@ -30,6 +32,11 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
@@ -51,6 +58,8 @@ public class AddScoreActivity extends AppCompatActivity {
     private ListStudentAddScoreAdapter adapter;
     private TextView subject;
     List<User> list;
+    String token;
+    private String subjectTech = ((User) Session.getSession()).getSubjectTeach();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -241,6 +250,11 @@ public class AddScoreActivity extends AppCompatActivity {
                                         EditText score = (EditText) v.findViewById(R.id.add_score_item_tv_student_score);
                                         item.setDate((LocalDate.now()).toString());
                                         item.setScoreReceived(Integer.valueOf(score.getText().toString()));
+
+                                        //send notìication
+                                        sendNotification(item.getStudentid());
+                                        sendNotificationToParent(item.getStudentid());
+
                                         db.collection("ScoreDetails").document(document.getId())
                                                 .set(item)
                                                 .addOnSuccessListener(new OnSuccessListener<Void>() {
@@ -272,6 +286,11 @@ public class AddScoreActivity extends AppCompatActivity {
                                     scoreDetails.setDate((LocalDate.now()).toString());
                                     scoreDetails.setScoreReceived(Integer.valueOf(score.getText().toString()));
                                     scoreDetails.setStudentid(hDocId.get(email.getText().toString()));
+
+                                    //send notìication
+                                    sendNotification(scoreDetails.getStudentid());
+                                    sendNotificationToParent(scoreDetails.getStudentid());
+
                                     db.collection("ScoreDetails").document()
                                             .set(scoreDetails)
                                             .addOnSuccessListener(new OnSuccessListener<Void>() {
@@ -292,7 +311,6 @@ public class AddScoreActivity extends AppCompatActivity {
                                             });
                                     call++;
                                 }
-
                                 call1 = 0;
                             }
                         }
@@ -350,6 +368,61 @@ public class AddScoreActivity extends AppCompatActivity {
                         });
             }
         }
+    }
+
+    public void sendNotification(String studentIdNoti){
+        DatabaseReference ref = FirebaseDatabase.getInstance().getReference();
+        DatabaseReference mostafa = ref.child("Tokens").child(studentIdNoti).child("token");
+        mostafa.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                token = dataSnapshot.getValue(String.class);
+                FcmNotificationsSender notificationsSender =
+                        new FcmNotificationsSender(token, "WI STUDY",  "You just got a new score in "+ subjectTech+" .See it Now!",
+                                getApplicationContext(),AddScoreActivity.this);
+                notificationsSender.SendNotifications();
+            }
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+    }
+
+    public void sendNotificationToParent(String studentIdNoti){
+        db.collection("User")
+                .whereEqualTo("childId", studentIdNoti)
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful()) {
+                            for (QueryDocumentSnapshot document : task.getResult()) {
+                                String idParent = document.getId();
+
+                                DatabaseReference ref = FirebaseDatabase.getInstance().getReference();
+                                DatabaseReference mostafa = ref.child("Tokens").child(idParent).child("token");
+                                mostafa.addListenerForSingleValueEvent(new ValueEventListener() {
+                                    @Override
+                                    public void onDataChange(DataSnapshot dataSnapshot) {
+                                        token = dataSnapshot.getValue(String.class);
+                                        FcmNotificationsSender notificationsSender =
+                                                new FcmNotificationsSender(token, "WI STUDY",  "Your child just got a new score in "+ subjectTech+" .See it Now!",
+                                                        getApplicationContext(),AddScoreActivity.this);
+                                        notificationsSender.SendNotifications();
+                                    }
+                                    @Override
+                                    public void onCancelled(DatabaseError databaseError) {
+
+                                    }
+                                });
+
+                            }
+                        }
+                    }
+                });
+
+
     }
 
 }

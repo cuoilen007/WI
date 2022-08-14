@@ -4,22 +4,41 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.app.NotificationCompat;
+import androidx.core.app.NotificationManagerCompat;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
 import com.example.mobile.R;
 import com.example.mobile.adapter.ViewRevisionClassAdapter;
 import com.example.mobile.adapter.ViewStudyResourceAdapter;
+import com.example.mobile.fkfirebase.FcmNotificationsSender;
 import com.example.mobile.model.User;
+import com.example.mobile.session.DocumentId;
 import com.example.mobile.session.Session;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.messaging.FirebaseMessaging;
 
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -32,10 +51,25 @@ public class StudentMenuActivity extends AppCompatActivity implements Navigation
     DrawerLayout drawerLayout;
     NavigationView navigationView;
     Toolbar toolbar;
+    String token ;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_student_menu);
+
+        //create Token
+        FirebaseMessaging.getInstance().getToken()
+                .addOnCompleteListener(new OnCompleteListener<String>() {
+                    @Override
+                    public void onComplete(@NonNull Task<String> task) {
+                        if (!task.isSuccessful()) {
+                            //   Log.w(TAG, "Fetching FCM registration token failed", task.getException());
+                            return;
+                        }
+                        token = task.getResult();
+                        FirebaseDatabase.getInstance().getReference("Tokens").child(DocumentId.getDocumentId()).child("token").setValue(token);
+                    }
+                });
 
         /*---------------------------------Hooks-----------------------------*/
         drawerLayout = findViewById(R.id.drawer_layout_student);
@@ -74,6 +108,8 @@ public class StudentMenuActivity extends AppCompatActivity implements Navigation
                 startActivity(intent);
             }
         });
+
+
 
         btnAcademyProgress.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -133,4 +169,8 @@ public class StudentMenuActivity extends AppCompatActivity implements Navigation
         drawerLayout.closeDrawer(GravityCompat.START);
         return true;
     }
+
+
+
+
 }
