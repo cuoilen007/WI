@@ -2,6 +2,7 @@ package com.example.mobile.adapter;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -11,6 +12,7 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.mobile.R;
@@ -52,14 +54,30 @@ public class RevisionClassAdapter extends RecyclerView.Adapter<RevisionClassAdap
         holder.txtSchedule.setText(revisionClass.getSchedule());
 
         FirebaseFirestore db = FirebaseFirestore.getInstance();
+        //xoa theo dialog
         holder.btnDelete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                db.collection("RevisionClass")
-                        .document(keyList.get(position))
-                        .delete();
-                list.remove(position);
-                notifyDataSetChanged();
+                AlertDialog.Builder b = new AlertDialog.Builder(context);
+                b.setTitle("Confirm");
+                b.setMessage("Are you sure delete this Revision Class?");
+                b.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        db.collection("RevisionClass")
+                                .document(keyList.get(position))
+                                .delete();
+                        list.remove(position);
+                        notifyDataSetChanged();
+                    }
+                });
+                b.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        dialog.cancel();
+                    }
+                });
+                AlertDialog al = b.create();
+                //Hiển thị
+                al.show();
             }
         });
         holder.btnEdit.setOnClickListener(new View.OnClickListener() {
