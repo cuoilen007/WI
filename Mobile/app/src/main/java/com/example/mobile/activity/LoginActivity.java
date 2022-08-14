@@ -19,6 +19,7 @@ import android.widget.Toast;
 
 import com.example.mobile.enumm.Roles;
 import com.example.mobile.fkfirebase.FcmNotificationsSender;
+import com.example.mobile.session.DocumentId;
 import com.example.mobile.session.Session;
 import com.example.mobile.session.Session.*;
 
@@ -41,6 +42,9 @@ import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.google.firebase.firestore.local.QueryResult;
 import com.google.firebase.messaging.FirebaseMessaging;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class LoginActivity extends AppCompatActivity {
     private FirebaseFirestore db;
@@ -125,7 +129,22 @@ public class LoginActivity extends AppCompatActivity {
                                 User user = (User) document.toObject(User.class);
                                 if (user != null) {
                                     Session.setSession(user);
-                                    User user1 = (User) Session.getSession();
+                                    //get id user session
+                                    List<String> lKey = new ArrayList<>();
+                                    db.collection("User")
+                                            .whereEqualTo("email",  ((User) Session.getSession()).getEmail())
+                                            .get()
+                                            .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                                                @Override
+                                                public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                                                    if (task.isSuccessful()) {
+                                                        for (QueryDocumentSnapshot document : task.getResult()) {
+                                                            lKey.add(document.getId());
+                                                        }
+                                                        DocumentId.setDocumentId(lKey.get(0));
+                                                    }
+                                                }
+                                            });
 
                                     Intent intent;
                                     switch (user.getCategoryUser()) {
