@@ -23,15 +23,14 @@ public class AnalysticActivity extends AppCompatActivity {
         BarChart chart = findViewById(R.id.barchart);
 
         ArrayList<BarEntry> barEntries=new ArrayList<>();
-        for (int i=0; i<10;i++){
-            int value=i*10;
-            BarEntry barEntry=new BarEntry(i,value);
-            barEntries.add(barEntry);
-        }
+        barEntries.add(new BarEntry(0,20));
+        barEntries.add(new BarEntry(1,40));
+
+
 
 
         BarDataSet bardataset = new BarDataSet(barEntries, "Subject");
-        chart.animateY(5000);
+        chart.animateY(1000);
         BarData data = new BarData(bardataset);
         bardataset.setColors(ColorTemplate.COLORFUL_COLORS);
         chart.setData(data);

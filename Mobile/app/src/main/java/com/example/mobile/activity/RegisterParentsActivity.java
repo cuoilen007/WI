@@ -337,11 +337,6 @@ public class RegisterParentsActivity extends AppCompatActivity {
                                     .show();
 
 
-                            // if the user created intent to login activity
-                            Intent intent
-                                    = new Intent(RegisterParentsActivity.this,
-                                    MainActivity.class);
-                            startActivity(intent);
                         }
                         else {
 
