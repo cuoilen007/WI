@@ -4,7 +4,9 @@ package com.example.mobile.activity;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.text.Editable;
@@ -43,11 +45,13 @@ import com.google.firebase.messaging.FirebaseMessaging;
 public class LoginActivity extends AppCompatActivity {
     private FirebaseFirestore db;
     private TextInputLayout etUsername, etPassword;
+    private Session session;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+//        session = new Session(LoginActivity.this);
 
 
         db = FirebaseFirestore.getInstance();
@@ -121,6 +125,8 @@ public class LoginActivity extends AppCompatActivity {
                                 User user = (User) document.toObject(User.class);
                                 if (user != null) {
                                     Session.setSession(user);
+                                    User user1 = (User) Session.getSession();
+
                                     Intent intent;
                                     switch (user.getCategoryUser()) {
                                         case "PARENTS":

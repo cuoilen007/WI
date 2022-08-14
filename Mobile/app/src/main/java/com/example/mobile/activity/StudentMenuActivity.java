@@ -10,10 +10,13 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import com.example.mobile.R;
 import com.example.mobile.adapter.ViewRevisionClassAdapter;
 import com.example.mobile.adapter.ViewStudyResourceAdapter;
+import com.example.mobile.model.User;
 import com.example.mobile.session.Session;
 import com.google.android.material.navigation.NavigationView;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
@@ -21,6 +24,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -32,6 +36,7 @@ public class StudentMenuActivity extends AppCompatActivity implements Navigation
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_student_menu);
+
         /*---------------------------------Hooks-----------------------------*/
         drawerLayout = findViewById(R.id.drawer_layout_student);
         navigationView = findViewById(R.id.user_nav_view1);
@@ -47,7 +52,7 @@ public class StudentMenuActivity extends AppCompatActivity implements Navigation
         navigationView.bringToFront();
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar,
                 R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-        toolbar.setTitle("???");
+        toolbar.setTitle("Student Menu");
         drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
         navigationView.setNavigationItemSelectedListener(this);
@@ -114,6 +119,10 @@ public class StudentMenuActivity extends AppCompatActivity implements Navigation
             case "Logout":
                 Session.setSession(null);
                 intent = new Intent(this, LoginActivity.class);
+                startActivity(intent);
+                break;
+            case "Register Parents Account":
+                intent = new Intent(this, RegisterParentsActivity.class);
                 startActivity(intent);
                 break;
         }
