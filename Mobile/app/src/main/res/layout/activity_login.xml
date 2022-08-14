@@ -27,7 +27,7 @@
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="20dp"
         android:layout_marginTop="50dp"
-        android:hint="email"
+        android:hint="Email"
         app:endIconMode="clear_text"
         app:startIconDrawable="@drawable/ic_baseline_person_24">
         <com.google.android.material.textfield.TextInputEditText
@@ -63,7 +63,7 @@
             android:id="@+id/a_tv_forgotpasswor"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_marginRight="20dp"
+            android:layout_marginRight="7dp"
             android:fontFamily="@font/baloo"
             android:text="Forgot Password?"
             android:textColor="@color/blue_default"
@@ -92,7 +92,6 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_marginEnd="5dp"
             android:fontFamily="@font/baloo"
             android:text="Don't have account? "
             android:textSize="16sp" />
@@ -101,7 +100,6 @@
             android:id="@+id/a_tv_register"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_marginStart="5dp"
             android:fontFamily="@font/baloo"
             android:text="Register now?"
             android:textColor="@color/blue_default"

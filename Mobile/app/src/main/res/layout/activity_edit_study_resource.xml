@@ -32,7 +32,9 @@
                     android:layout_alignParentLeft="true"
                     android:layout_centerVertical="true"
                     android:text="Add Study Resource"
-                    android:textColor="@color/whiteTextColor" />
+                    android:textColor="@color/whiteTextColor"
+                    android:fontFamily="@font/baloo"
+                    android:textSize="20dp"/>
 
                 <ImageView
                     android:id="@+id/imgSocial"
@@ -70,7 +72,7 @@
                             android:layout_marginBottom="5dp"
                             android:textStyle="bold"
                             android:textSize="20dp"
-                            android:text="Subject :"
+                            android:text="Subject:"
                             android:layout_marginRight="8dp"/>
 
                         <TextView
@@ -93,7 +95,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginBottom="5dp"
-                            android:text="Topic" />
+                            android:text="Topic:" />
 
                         <EditText
                             android:id="@+id/editTopicResource"
@@ -112,7 +114,7 @@
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="Link URL" />
+                            android:text="Link URL:" />
 
                         <EditText
                             android:id="@+id/editLinkUrl"

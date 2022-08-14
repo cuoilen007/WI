@@ -63,10 +63,10 @@
                             android:layout_height="match_parent"
                             android:layout_alignParentLeft="true"
                             android:layout_centerVertical="true"
+                            android:fontFamily="@font/baloo"
                             android:text="Student Menu"
                             android:textColor="@color/blue_default"
-                            android:textSize="22dp"
-                            android:fontFamily="@font/baloo"/>
+                            android:textSize="20dp" />
 
                         <ImageView
                             android:layout_width="wrap_content"
@@ -92,7 +92,7 @@
                             android:drawableTop="@drawable/ic_baseline_text_snippet_24"
                             android:background="@color/blue_default"
                             android:padding="8dp"
-                            android:layout_margin="8dp"
+                            android:layout_margin="4dp"
                             android:textSize="12dp"/>
 
                         <Button
@@ -100,7 +100,7 @@
                             style="@style/menuButton"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_margin="8dp"
+                            android:layout_margin="4dp"
                             android:background="@color/blue_default"
                             android:drawableTop="@drawable/ic_baseline_school_24"
                             android:padding="8dp"
@@ -118,7 +118,7 @@
                             android:drawableTop="@drawable/ic_baseline_menu_book_24"
                             android:background="@color/blue_default"
                             android:padding="8dp"
-                            android:layout_margin="8dp"
+                            android:layout_margin="4dp"
                             android:textSize="12dp"/>
 
                         <Button
@@ -130,7 +130,7 @@
                             android:drawableTop="@drawable/ic_baseline_groups_1_24"
                             android:background="@color/blue_default"
                             android:padding="8dp"
-                            android:layout_margin="8dp"
+                            android:layout_margin="4dp"
                             android:textSize="12dp"/>
                     </TableRow>
                     <TableRow>
@@ -143,7 +143,7 @@
                             android:drawableTop="@drawable/ic_baseline_help_24"
                             android:background="@color/blue_default"
                             android:padding="8dp"
-                            android:layout_margin="8dp"
+                            android:layout_margin="4dp"
                             android:textSize="12dp"/>
                         <Button
                             style="@style/menuButton"
@@ -154,7 +154,7 @@
                             android:drawableTop="@drawable/ic_baseline_help_24"
                             android:background="@color/blue_default"
                             android:padding="8dp"
-                            android:layout_margin="8dp"
+                            android:layout_margin="4dp"
                             android:textSize="12dp"/>
                     </TableRow>
                 </TableLayout>
