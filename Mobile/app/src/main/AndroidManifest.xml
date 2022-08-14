@@ -14,6 +14,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Mobile">
         <activity
+            android:name=".activity.RegisterParentsActivity"
+            android:exported="false" />
+        <activity
             android:name=".activity.AnalysticActivity"
             android:exported="false" />
         <activity
