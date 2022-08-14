@@ -12,8 +12,10 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 import com.example.mobile.R;
+import com.example.mobile.model.User;
 import com.example.mobile.session.Session;
 import com.google.android.material.navigation.NavigationView;
 
@@ -31,9 +33,13 @@ public class TeacherMenuActivity extends AppCompatActivity implements Navigation
         toolbar = findViewById(R.id.toolbar1);
         /*--------------------------------Load TextView Header --------------------------*/
         View header = navigationView.getHeaderView(0);
-//        tvName = header.findViewById(R.id.hd_tv_name);
-//        tvEmail = header.findViewById(R.id.hd_tv_email);
-//        tvBalance = header.findViewById(R.id.hd_tv_balance);
+        TextView tvName = header.findViewById(R.id.hd_tv_name);
+        TextView tvEmail = header.findViewById(R.id.hd_tv_email);
+        TextView tvBalance = header.findViewById(R.id.hd_tv_balance);
+
+        tvName.setText(((User)Session.getSession()).getFirstName() + " " + ((User)Session.getSession()).getLastName());
+        tvEmail.setText(((User)Session.getSession()).getEmail());
+        tvBalance.setText(((User)Session.getSession()).getCategoryUser());
         /*--------------------------------Tool Bar--------------------------*/
         //setSupportActionBar(toolbar);
         /*--------------------------------Navigation Drawer Menu--------------------------*/

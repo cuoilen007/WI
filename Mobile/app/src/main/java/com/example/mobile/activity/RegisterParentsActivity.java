@@ -28,6 +28,7 @@ import android.widget.Toast;
 import com.example.mobile.R;
 import com.example.mobile.enumm.Roles;
 import com.example.mobile.model.User;
+import com.example.mobile.session.DocumentId;
 import com.example.mobile.session.Session;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -49,15 +50,12 @@ public class RegisterParentsActivity extends AppCompatActivity {
     private Button btnRegister;
     private FirebaseFirestore db;
     private FirebaseAuth mAuth;
-    private User SessionUser;
-    private String userIdSession;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register_parents);
-        SessionUser = (User) Session.getSession();
 
         mAuth = FirebaseAuth.getInstance();
         // calling the action bar
@@ -167,23 +165,6 @@ public class RegisterParentsActivity extends AppCompatActivity {
             }
         });
 
-        //get id user session
-        List<String> lKey = new ArrayList<>();
-        db.collection("User")
-                .whereEqualTo("email",  ((User) Session.getSession()).getEmail())
-                .get()
-                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-                    @Override
-                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                        if (task.isSuccessful()) {
-                            for (QueryDocumentSnapshot document : task.getResult()) {
-                                lKey.add(document.getId());
-                            }
-                            userIdSession = lKey.get(0);
-                        }
-                    }
-                });
-
     }
 
     //back
@@ -265,10 +246,6 @@ public class RegisterParentsActivity extends AppCompatActivity {
                             }
 
                             registerNewUser(etEmail.getEditText().getText().toString(),etPassword.getEditText().getText().toString() );
-
-
-
-
                             //create user
                             User user = new User();
                             user.setEmail(etEmail.getEditText().getText().toString());
@@ -276,15 +253,14 @@ public class RegisterParentsActivity extends AppCompatActivity {
                             user.setLastName(etLastName.getEditText().getText().toString());
                             user.setContact(etContact.getEditText().getText().toString());
                             user.setActive(false);
-                            user.setChildId("");
+                            user.setChildId(DocumentId.getDocumentId());
                             user.setPassword(etPassword.getEditText().getText().toString());
                             user.setCategoryUser("PARENTS");
-                            Toast.makeText(RegisterParentsActivity.this, userIdSession, Toast.LENGTH_SHORT).show();
 
                             //edit userSession field createdParent
-                            SessionUser.setCreatedParent(true);
-                            db.collection("User").document(userIdSession)
-                                    .set(SessionUser)
+                            ((User) Session.getSession()).setCreatedParent(true);
+                            db.collection("User").document(DocumentId.getDocumentId())
+                                    .set((User) Session.getSession())
                                     .addOnSuccessListener(new OnSuccessListener<Void>() {
                                         @Override
                                         public void onSuccess(Void aVoid) {
@@ -321,7 +297,6 @@ public class RegisterParentsActivity extends AppCompatActivity {
 
     private void registerNewUser(String email, String password)
     {
-
         // create new user or register new user
         mAuth
                 .createUserWithEmailAndPassword(email, password)
@@ -336,12 +311,12 @@ public class RegisterParentsActivity extends AppCompatActivity {
                                     Toast.LENGTH_LONG)
                                     .show();
 
-
                             // if the user created intent to login activity
                             //Intent intent
                                     //= new Intent(RegisterParentsActivity.this,
                                     //MainActivity.class);
                             //startActivity(intent);
+
                         }
                         else {
 

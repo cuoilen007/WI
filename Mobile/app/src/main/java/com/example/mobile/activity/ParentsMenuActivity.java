@@ -12,8 +12,10 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 import com.example.mobile.R;
+import com.example.mobile.model.User;
 import com.example.mobile.session.Session;
 import com.google.android.material.navigation.NavigationView;
 
@@ -31,9 +33,13 @@ public class ParentsMenuActivity extends AppCompatActivity implements Navigation
         toolbar = findViewById(R.id.toolbar1);
         /*--------------------------------Load TextView Header --------------------------*/
         View header = navigationView.getHeaderView(0);
-//        tvName = header.findViewById(R.id.hd_tv_name);
-//        tvEmail = header.findViewById(R.id.hd_tv_email);
-//        tvBalance = header.findViewById(R.id.hd_tv_balance);
+        TextView tvName = header.findViewById(R.id.hd_tv_name);
+        TextView tvEmail = header.findViewById(R.id.hd_tv_email);
+        TextView tvBalance = header.findViewById(R.id.hd_tv_balance);
+
+        tvName.setText(((User)Session.getSession()).getFirstName() + " " + ((User)Session.getSession()).getLastName());
+        tvEmail.setText(((User)Session.getSession()).getEmail());
+        tvBalance.setText("PARENTS");
         /*--------------------------------Tool Bar--------------------------*/
         //setSupportActionBar(toolbar);
         /*--------------------------------Navigation Drawer Menu--------------------------*/
@@ -45,11 +51,61 @@ public class ParentsMenuActivity extends AppCompatActivity implements Navigation
         toggle.syncState();
         navigationView.setNavigationItemSelectedListener(this);
         //find element
-        Button btnViewScore = findViewById(R.id.btnViewScore);
-        Button btnAcademyProgress = findViewById(R.id.btnAcademyProgress);
-        Button btnStudyResources = findViewById(R.id.btnStudyResources);
-        Button btnRevisionClasses = findViewById(R.id.btnRevisionClasses);
-        Button btnHelplines = findViewById(R.id.btnHelplines);
+        Button btnViewScore = findViewById(R.id.btnViewScoreParents);
+        Button btnAcademyProgress = findViewById(R.id.btnAcademyProgressParents);
+        Button btnStudyResources = findViewById(R.id.btnStudyResourcesParents);
+        Button btnRevisionClasses = findViewById(R.id.btnRevisionClassesParents);
+        Button btnHelplines = findViewById(R.id.btnHelplinesParents);
+        Button btnAnalystic = findViewById(R.id.btnAnalysticParents);
+
+        btnViewScore.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(ParentsMenuActivity.this, ViewScoresActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        btnAcademyProgress.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(ParentsMenuActivity.this, AcademyProgressActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        btnStudyResources.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(ParentsMenuActivity.this, ViewStudyResourceActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        btnRevisionClasses.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(ParentsMenuActivity.this, ViewRevisionClassActivity.class);
+                startActivity(intent);
+            }
+        });
+
+
+        btnHelplines.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(ParentsMenuActivity.this, ContactusActivity.class);
+                startActivity(intent);
+            }
+        });
+        btnAnalystic.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(ParentsMenuActivity.this, AnalysticActivity.class);
+                startActivity(intent);
+            }
+        });
+
     }
 
     @Override

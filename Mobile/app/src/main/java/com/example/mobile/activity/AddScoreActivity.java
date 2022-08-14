@@ -98,6 +98,7 @@ public class AddScoreActivity extends AppCompatActivity {
 
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                checkSpTest();
                 if (!validateSpTest() && !validateSpTest()){
                     listView.setAdapter(null);
                     return;
@@ -317,6 +318,37 @@ public class AddScoreActivity extends AppCompatActivity {
             return false;
         }else{
             return true;
+        }
+    }
+    private void checkSpTest() {
+        HashMap<Integer, String> hmTest = new HashMap<>();
+        hmTest.put(1, "fast-test1");
+        hmTest.put(2, "middle-test1");
+        hmTest.put(3, "final-test1");
+        hmTest.put(4, "fast-test2");
+        hmTest.put(5, "middle-test2");
+        hmTest.put(6, "final-test2");
+        for (Integer key : hmTest.keySet()){
+            if (hmTest.get(key).equals(spTest.getSelectedItem().toString()) && key!=1){
+                db.collection("ScoreDetails").whereEqualTo("testname", hmTest.get(key-1)).whereEqualTo("className", spClass.getSelectedItem().toString()).whereEqualTo("subjectName", ((User)Session.getSession()).getSubjectTeach())
+                        .get()
+                        .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                            @Override
+                            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                                if (task.isSuccessful()) {
+                                    for (QueryDocumentSnapshot document : task.getResult()) {
+                                        return;
+                                    }
+                                    AlertDialog builder = new AlertDialog.Builder(AddScoreActivity.this).create();
+                                    builder.setIcon(R.drawable.ic_baseline_error_24);
+                                    builder.setTitle("Error!");
+                                    builder.setMessage("Please enter the score for the previous test first!");
+                                    builder.show();
+                                    spTest.setSelection(0);
+                                }
+                            }
+                        });
+            }
         }
     }
 

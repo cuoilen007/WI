@@ -49,7 +49,6 @@ import java.util.List;
 public class LoginActivity extends AppCompatActivity {
     private FirebaseFirestore db;
     private TextInputLayout etUsername, etPassword;
-    private Session session;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -142,33 +141,38 @@ public class LoginActivity extends AppCompatActivity {
                                                             lKey.add(document.getId());
                                                         }
                                                         DocumentId.setDocumentId(lKey.get(0));
+
+                                                        Intent intent;
+                                                        switch (user.getCategoryUser()) {
+                                                            case "PARENTS":
+                                                                DocumentId.setDocumentId(user.getChildId());
+                                                                intent = new Intent(LoginActivity.this, ParentsMenuActivity.class);
+                                                                startActivity(intent);
+                                                                break;
+                                                            case "STUDENT":
+                                                                intent = new Intent(LoginActivity.this, StudentMenuActivity.class);
+                                                                startActivity(intent);
+                                                                break;
+                                                            case "TEACHER":
+                                                                intent = new Intent(LoginActivity.this, TeacherMenuActivity.class);
+                                                                startActivity(intent);
+                                                                break;
+                                                        }
+                                                        return;
                                                     }
                                                 }
                                             });
 
-                                    Intent intent;
-                                    switch (user.getCategoryUser()) {
-                                        case "PARENTS":
-                                            intent = new Intent(LoginActivity.this, ParentsMenuActivity.class);
-                                            startActivity(intent);
-                                            break;
-                                        case "STUDENT":
-                                            intent = new Intent(LoginActivity.this, StudentMenuActivity.class);
-                                            startActivity(intent);
-                                            break;
-                                        case "TEACHER":
-                                            intent = new Intent(LoginActivity.this, TeacherMenuActivity.class);
-                                            startActivity(intent);
-                                            break;
-                                        default: Toast.makeText(LoginActivity.this, "User name or password invalid!!", Toast.LENGTH_LONG).show();
-                                    }
-                                    return;
+
                                 } else {
                                     Toast.makeText(LoginActivity.this, "User name or password invalid!!", Toast.LENGTH_LONG).show();
                                 }
                             }
                         }
-                        Toast.makeText(LoginActivity.this, "User name or password invalid!!", Toast.LENGTH_LONG).show();
+                        else {
+                            Toast.makeText(LoginActivity.this, "User name or password invalid!!", Toast.LENGTH_LONG).show();
+                        }
+
                     }
                 });
     }
