@@ -86,7 +86,7 @@
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="StartDate:" />
+                            android:text="Start Date:" />
 
                         <EditText
                             android:id="@+id/editStartDate"
@@ -104,7 +104,7 @@
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="EndDate:" />
+                            android:text="End Date:" />
 
                         <EditText
                             android:id="@+id/editEndDate"

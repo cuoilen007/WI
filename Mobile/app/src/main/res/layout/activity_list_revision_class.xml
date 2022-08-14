@@ -21,8 +21,7 @@
             android:textAlignment="center"
             android:textSize="26dp"
             android:layout_marginTop="5dp"
-            android:fontFamily="@font/baloo"
-            android:textColor="@color/white"/>
+            android:fontFamily="@font/baloo"/>
 
         <Button
             android:id="@+id/btnCreateExtraClass"
