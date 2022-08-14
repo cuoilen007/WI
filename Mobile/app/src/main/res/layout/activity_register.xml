@@ -11,7 +11,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="30dp"
-        android:layout_marginTop="30dp"
         android:fontFamily="@font/baloo"
         android:freezesText="false"
         android:text="Register"
@@ -129,6 +128,40 @@
                 android:text="Male"
                 android:inputType="none"/>
         </com.google.android.material.textfield.TextInputLayout>
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+            android:id="@+id/a_register_et_class"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="10dp"
+            android:layout_marginVertical="5dp"
+            android:visibility="gone"
+            app:startIconDrawable="@drawable/ic_baseline_supervisor_account_24"
+            app:boxBackgroundColor="@color/white">
+            <AutoCompleteTextView
+                android:id="@+id/a_register_act_class"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="Class"
+                android:inputType="none"/>
+        </com.google.android.material.textfield.TextInputLayout>
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+            android:id="@+id/a_register_et_subject"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="10dp"
+            android:layout_marginVertical="5dp"
+            android:visibility="gone"
+            app:startIconDrawable="@drawable/ic_baseline_supervisor_account_24"
+            app:boxBackgroundColor="@color/white">
+            <AutoCompleteTextView
+                android:id="@+id/a_register_act_subject"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="Subject"
+                android:inputType="none"/>
+        </com.google.android.material.textfield.TextInputLayout>
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
@@ -157,7 +190,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="100dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="10dp"
         android:backgroundTint="@color/blue_default"
         android:fontFamily="@font/baloo"
         android:text="Register"

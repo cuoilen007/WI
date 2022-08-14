@@ -57,7 +57,7 @@ public class StudentMenuActivity extends AppCompatActivity implements Navigation
         Button btnStudyResources = findViewById(R.id.btnStudyResources);
         Button btnRevisionClasses = findViewById(R.id.btnRevisionClasses);
         Button btnHelplines = findViewById(R.id.btnHelplines);
-        Button btnAnalystic=findViewById(R.id.btnAnalystic);
+        Button btnAnalystic = findViewById(R.id.btnAnalystic);
         btnViewScore.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
