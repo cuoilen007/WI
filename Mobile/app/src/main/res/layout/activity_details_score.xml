@@ -88,7 +88,7 @@
             android:text="GPA"
             android:textSize="18dp"
             android:paddingLeft="20dp"
-            android:textStyle="bold" />
+            android:fontFamily="@font/baloo" />
 
         <TextView
             android:id="@+id/textView15"
@@ -98,6 +98,6 @@
             android:padding="5dp"
             android:text="0.0"
             android:textSize="18dp"
-            android:textStyle="bold" />
+            android:fontFamily="@font/baloo" />
     </LinearLayout>
 </LinearLayout>
