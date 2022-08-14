@@ -24,6 +24,8 @@ import com.example.mobile.R;
 import com.example.mobile.fkfirebase.FkFireBase;
 import com.example.mobile.model.ScoreDetails;
 import com.example.mobile.model.Subject;
+import com.example.mobile.model.User;
+import com.example.mobile.session.Session;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
@@ -87,8 +89,8 @@ public class ViewScoresActivity extends AppCompatActivity {
                     }
                 });
         spSubject.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_dropdown_item_1line, subjectAdapter));
-        tvName.setText("John Smith");
-        tvClass.setText("12A");
+        tvName.setText(((User)Session.getSession()).getFirstName() + ((User)Session.getSession()).getLastName());
+        tvClass.setText(((User)Session.getSession()).getClass().toString());
 
 
 
