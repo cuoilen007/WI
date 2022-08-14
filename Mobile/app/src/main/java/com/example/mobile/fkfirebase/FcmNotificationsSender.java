@@ -28,7 +28,6 @@ public class FcmNotificationsSender {
 
     private final String postUrl = "https://fcm.googleapis.com/fcm/send";
     private final String fcmServerKey ="AAAA-lkm608:APA91bHseH-C-CgjiaircVGKFGjXfEp5de6qTIZpQewSrSdW59YMaJDxLFecqbCyrNkBCYryjaYRPv1dpIDH9lRiYa82Zbt7RafraylddtV-dn4v3HFXwe5CcfaqZRqE3Y-W5d8AjWPZ";
-
     public FcmNotificationsSender(String userFcmToken, String title, String body, Context mContext, Activity mActivity) {
         this.userFcmToken = userFcmToken;
         this.title = title;
@@ -38,6 +37,9 @@ public class FcmNotificationsSender {
     }
 
     public void SendNotifications() {
+
+
+
 
         RequestQueue requestQueue = Volley.newRequestQueue(mActivity);
         JSONObject mainObj = new JSONObject();

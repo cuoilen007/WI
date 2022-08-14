@@ -1,6 +1,8 @@
 
 package com.example.mobile.activity;
 
+import static android.content.ContentValues.TAG;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -11,6 +13,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -30,6 +33,7 @@ import com.example.mobile.model.User;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputLayout;
+import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GetTokenResult;
@@ -49,6 +53,7 @@ import java.util.List;
 public class LoginActivity extends AppCompatActivity {
     private FirebaseFirestore db;
     private TextInputLayout etUsername, etPassword;
+    String uid;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -140,7 +145,21 @@ public class LoginActivity extends AppCompatActivity {
                                                         for (QueryDocumentSnapshot document : task.getResult()) {
                                                             lKey.add(document.getId());
                                                         }
+
                                                         DocumentId.setDocumentId(lKey.get(0));
+                                                        //create Token
+                                                        FirebaseMessaging.getInstance().getToken()
+                                                                .addOnCompleteListener(new OnCompleteListener<String>() {
+                                                                    @Override
+                                                                    public void onComplete(@NonNull Task<String> task) {
+                                                                        if (!task.isSuccessful()) {
+                                                                            //   Log.w(TAG, "Fetching FCM registration token failed", task.getException());
+                                                                            return;
+                                                                        }
+                                                                        String token = task.getResult();
+                                                                        FirebaseDatabase.getInstance().getReference("Tokens").child(lKey.get(0)).child("token").setValue(token);
+                                                                    }
+                                                                });
 
                                                         Intent intent;
                                                         switch (user.getCategoryUser()) {
@@ -162,8 +181,6 @@ public class LoginActivity extends AppCompatActivity {
                                                     }
                                                 }
                                             });
-
-
                                 } else {
                                     Toast.makeText(LoginActivity.this, "User name or password invalid!!", Toast.LENGTH_LONG).show();
                                 }
@@ -175,6 +192,8 @@ public class LoginActivity extends AppCompatActivity {
 
                     }
                 });
+
+
     }
 
     private boolean validateEmail() {
@@ -197,31 +216,5 @@ public class LoginActivity extends AppCompatActivity {
         }
     }
 
-//    private void sendNotification(String userid){
-//        FirebaseDatabase.getInstance().getReference().child(userid).child("token").addListenerForSingleValueEvent(
-//                new ValueEventListener() {
-//                    @Override
-//                    public void onDataChange(@NonNull DataSnapshot snapshot) {
-//                        usertoken = snapshot.getValue(String.class);
-//                    }
-//
-//                    @Override
-//                    public void onCancelled(@NonNull DatabaseError error) {
-//
-//                    }
-//                }
-//        );
-//
-//        Handler handler = new Handler();
-//        handler.postDelayed(new Runnable() {
-//            @Override
-//            public void run() {
-//                FcmNotificationsSender notificationsSender = new FcmNotificationsSender(usertoken,"WI", "Test",
-//                        getApplicationContext(), LoginActivity.this);
-//                notificationsSender.SendNotifications();
-//            }
-//        },3000);
-//
-//    }
 
 }
