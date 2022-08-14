@@ -74,58 +74,89 @@
                             android:layout_alignParentRight="true"
                             android:src="@drawable/ic_register_hero" />
                     </RelativeLayout>
+                    <TableLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:stretchColumns="1"
+                        android:shrinkColumns="0"
+                        android:paddingTop="20dp"
+                        android:paddingBottom="20dp">
+                        <TableRow>
+                            <Button
+                                style="@style/menuButton"
+                                android:id="@+id/btnViewScoreParents"
+                                android:layout_width="170dp"
+                                android:layout_height="wrap_content"
+                                android:text="View Score"
+                                android:drawableTop="@drawable/ic_baseline_text_snippet_24"
+                                android:background="@color/blue_default"
+                                android:padding="8dp"
+                                android:layout_margin="8dp"
+                                android:textSize="12dp"/>
 
+                            <Button
+                                android:id="@+id/btnAcademyProgressParents"
+                                style="@style/menuButton"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_margin="8dp"
+                                android:background="@color/blue_default"
+                                android:drawableTop="@drawable/ic_baseline_school_24"
+                                android:padding="8dp"
+                                android:text="Academic Progress"
+                                android:textSize="12dp" />
 
-                <TableLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:stretchColumns="1"
-                    android:shrinkColumns="0"
-                    android:paddingBottom="20dp"
-                    android:paddingTop="20dp">
-                    <TableRow>
-                        <Button
-                            android:id="@+id/btnViewScore"
-                            style="@style/menuButton"
-                            android:layout_width="170dp"
-                            android:layout_height="wrap_content"
-                            android:text="View Score"
-                            android:drawableTop="@drawable/ic_baseline_text_snippet_24"
-                            android:background="@color/blue_default"
-                            android:padding="8dp"
-                            android:layout_margin="8dp"
-                            android:textSize="12dp"/>
+                        </TableRow>
+                        <TableRow>
+                            <Button
+                                style="@style/menuButton"
+                                android:id="@+id/btnStudyResourcesParents"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="Study Resources"
+                                android:drawableTop="@drawable/ic_baseline_menu_book_24"
+                                android:background="@color/blue_default"
+                                android:padding="8dp"
+                                android:layout_margin="8dp"
+                                android:textSize="12dp"/>
 
-                        <Button
-                            android:id="@+id/btnAcademyProgress"
-                            style="@style/menuButton"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_margin="8dp"
-                            android:background="@color/blue_default"
-                            android:drawableTop="@drawable/ic_baseline_school_24"
-                            android:padding="8dp"
-                            android:text="Academic Progress"
-                            android:textSize="12dp" />
-
-                    </TableRow>
-                    <TableRow>
-                        <Button
-                            android:id="@+id/btnHelplines"
-                            style="@style/menuButton"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="Helplines"
-                            android:drawableTop="@drawable/ic_baseline_help_24"
-                            android:background="@color/blue_default"
-                            android:padding="8dp"
-                            android:layout_margin="8dp"
-                            android:textSize="12dp"/>
-                    </TableRow>
-                </TableLayout>
-
-
-
+                            <Button
+                                style="@style/menuButton"
+                                android:id="@+id/btnRevisionClassesParents"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="Revision Classes"
+                                android:drawableTop="@drawable/ic_baseline_groups_1_24"
+                                android:background="@color/blue_default"
+                                android:padding="8dp"
+                                android:layout_margin="8dp"
+                                android:textSize="12dp"/>
+                        </TableRow>
+                        <TableRow>
+                            <Button
+                                style="@style/menuButton"
+                                android:id="@+id/btnHelplinesParents"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="Helplines"
+                                android:drawableTop="@drawable/ic_baseline_help_24"
+                                android:background="@color/blue_default"
+                                android:padding="8dp"
+                                android:layout_margin="8dp"
+                                android:textSize="12dp"/>
+                            <Button
+                                style="@style/menuButton"
+                                android:id="@+id/btnAnalysticParents"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="Analys"
+                                android:drawableTop="@drawable/ic_baseline_help_24"
+                                android:background="@color/blue_default"
+                                android:padding="8dp"
+                                android:layout_margin="8dp"
+                                android:textSize="12dp"/>
+                        </TableRow>
+                    </TableLayout>
                     <CheckBox
                         android:id="@+id/checkBox"
                         android:layout_width="match_parent"
