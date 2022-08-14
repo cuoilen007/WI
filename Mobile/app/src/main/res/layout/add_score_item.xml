@@ -22,6 +22,15 @@
             android:text="Student Name"
             android:textSize="17dp"
             android:textStyle="bold" />
+        <TextView
+            android:id="@+id/add_score_item_tv_student_email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="8"
+            android:textAlignment="center"
+            android:visibility="gone"
+            android:text="Student Name"
+            android:textSize="17dp" />
         <EditText
             android:id="@+id/add_score_item_tv_student_score"
             android:layout_width="70dp"
@@ -32,7 +41,7 @@
             android:background="@drawable/border_md"
             android:textAlignment="center"
             android:inputType="number"
-            android:hint="0.0" />
+            android:hint="00" />
     </LinearLayout>
 
 </LinearLayout>

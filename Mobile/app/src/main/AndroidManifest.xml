@@ -67,9 +67,6 @@
             android:name=".activity.AddScoreActivity"
             android:exported="false" />
         <activity
-            android:name=".activity.MainActivity"
-            android:exported="false" />
-        <activity
             android:name=".activity.ViewScoresActivity"
             android:exported="false" />
         <activity

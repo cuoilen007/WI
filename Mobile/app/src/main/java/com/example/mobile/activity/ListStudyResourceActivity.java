@@ -41,7 +41,7 @@ public class ListStudyResourceActivity extends AppCompatActivity {
         adapter=new StudyResourceAdapter(studyResources,keySet,this);
         recyclerView.setAdapter(adapter);
 
-        btnCreate=findViewById(R.id.btn_Create_Study_Resource);
+        btnCreate=findViewById(R.id.btnCreateStudyResource);
         btnCreate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

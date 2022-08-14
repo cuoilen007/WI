@@ -19,6 +19,7 @@ import android.text.style.ForegroundColorSpan;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
@@ -44,8 +45,8 @@ import com.google.firebase.firestore.QuerySnapshot;
 import java.util.Locale;
 
 public class RegisterActivity extends AppCompatActivity {
-    private AutoCompleteTextView actRole;
-    private TextInputLayout etFirstName, etLastName, etEmail, etContact, etPassword, etRole;
+    private AutoCompleteTextView actRole, actClass, actSubject;
+    private TextInputLayout etFirstName, etLastName, etEmail, etContact, etPassword, etRole, etClass, etSubject;
     private Button btnRegister;
     private TextView tvLoginHere;
     private FirebaseFirestore db;
@@ -68,7 +69,12 @@ public class RegisterActivity extends AppCompatActivity {
         //find element
         db = FirebaseFirestore.getInstance();
         actRole = findViewById(R.id.a_register_act_role);
+        actClass = findViewById(R.id.a_register_act_class);
+        actSubject = findViewById(R.id.a_register_act_subject);
         tvLoginHere = findViewById(R.id.a_register_tv_login_here);
+        etRole = findViewById(R.id.a_register_et_role);
+        etClass = findViewById(R.id.a_register_et_class);
+        etSubject = findViewById(R.id.a_register_et_subject);
         etRole = findViewById(R.id.a_register_et_role);
         etFirstName = findViewById(R.id.a_register_et_firstname);
         etLastName = findViewById(R.id.a_register_et_lastname);
@@ -81,6 +87,28 @@ public class RegisterActivity extends AppCompatActivity {
         ArrayAdapter arrayAdapter = new ArrayAdapter(this, R.layout.dropdown_item, option);
         actRole.setText("Roles", false);
         actRole.setAdapter(arrayAdapter);
+        String[] classArr = {"10A", "10B", "11A", "11B","12A", "12B"};
+        actClass.setText("Class", false);
+        ArrayAdapter arrayAdapterClass = new ArrayAdapter(this, R.layout.dropdown_item, classArr);
+        actClass.setAdapter(arrayAdapterClass);
+        String[] subjectArr = {"Biology", "Maths", "Physics", "English", "Chemistry", "Literature", "History", "Geography"};
+        actSubject.setText("Subject", false);
+        ArrayAdapter arrayAdapterSubject = new ArrayAdapter(this, R.layout.dropdown_item, subjectArr);
+        actSubject.setAdapter(arrayAdapterSubject);
+        //chose role
+        actRole.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                String r = parent.getItemAtPosition(position).toString();
+                if (r.equals("Student")){
+                    etSubject.setVisibility(View.GONE);
+                    etClass.setVisibility(View.VISIBLE);
+                }else if(r.equals("Teacher")){
+                    etClass.setVisibility(View.GONE);
+                    etSubject.setVisibility(View.VISIBLE);
+                }
+            }
+        });
         //validate
         etFirstName.getEditText().addTextChangedListener(new TextWatcher() {
             @Override
@@ -270,7 +298,6 @@ public class RegisterActivity extends AppCompatActivity {
 
                             registerNewUser(etEmail.getEditText().getText().toString(),etPassword.getEditText().getText().toString() );
 
-
                             //create user
                             User user = new User();
                             user.setEmail(etEmail.getEditText().getText().toString());
@@ -281,8 +308,9 @@ public class RegisterActivity extends AppCompatActivity {
                             user.setCategoryUser(actRole.getText().toString().toUpperCase());
                             user.setCreatedParent(false);
                             user.setPassword(etPassword.getEditText().getText().toString());
-                            user.setSubjectTeach("");
+                            user.setSubjectTeach(actSubject.getText().toString());
                             user.setChildId("");
+                            user.setClassed(actClass.getText().toString());
                             db.collection("User").document()
                                     .set(user)
                                     .addOnSuccessListener(new OnSuccessListener<Void>() {
@@ -333,10 +361,10 @@ public class RegisterActivity extends AppCompatActivity {
 
 
                             // if the user created intent to login activity
-                            Intent intent
-                                    = new Intent(RegisterActivity.this,
-                                    MainActivity.class);
-                            startActivity(intent);
+//                            Intent intent
+//                                    = new Intent(RegisterActivity.this,
+//                                    MainActivity.class);
+//                            startActivity(intent);
                         }
                         else {
 
