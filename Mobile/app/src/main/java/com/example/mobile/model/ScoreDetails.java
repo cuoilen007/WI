@@ -9,6 +9,15 @@ public class ScoreDetails implements Serializable {
     private String SubjectName;
     private int scoreReceived;
     private String date;
+    private String documentId;
+
+    public String getDocumentId() {
+        return documentId;
+    }
+
+    public void setDocumentId(String documentId) {
+        this.documentId = documentId;
+    }
 
     public ScoreDetails() {
     }

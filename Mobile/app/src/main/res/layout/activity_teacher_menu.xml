@@ -96,7 +96,7 @@
                             android:textSize="12dp"/>
 
                         <Button
-                            android:id="@+id/btnAddStudyResources"
+                            android:id="@+id/btnStudyResourcesTeacher"
                             style="@style/menuButton"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"

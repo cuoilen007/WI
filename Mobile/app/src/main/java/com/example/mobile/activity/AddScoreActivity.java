@@ -1,10 +1,13 @@
 package com.example.mobile.activity;
 
+import static android.content.ContentValues.TAG;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -19,6 +22,7 @@ import com.example.mobile.adapter.ListStudentAddScoreAdapter;
 import com.example.mobile.model.Class;
 import com.example.mobile.model.ScoreDetails;
 import com.example.mobile.model.StudentData;
+import com.example.mobile.model.Subject;
 import com.example.mobile.model.Test;
 import com.example.mobile.model.User;
 import com.example.mobile.session.Session;
@@ -187,5 +191,6 @@ public class AddScoreActivity extends AppCompatActivity {
         }
 
 
-    }
+   }
+
 }

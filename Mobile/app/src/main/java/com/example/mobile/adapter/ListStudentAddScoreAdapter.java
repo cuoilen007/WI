@@ -47,7 +47,7 @@ public class ListStudentAddScoreAdapter extends BaseAdapter {
             viewContact = convertView;
         }
         TextView tvStudentName = (TextView) viewContact.findViewById(R.id.add_score_item_tv_student_name);
-        //TextView etStudentScore = (TextView) viewContact.findViewById(R.id.add_score_item_tv_student_score);
+        TextView etStudentScore = (TextView) viewContact.findViewById(R.id.add_score_item_tv_student_score);
         //set text
         tvStudentName.setText(item.getStudentName().toString());
         return viewContact;
