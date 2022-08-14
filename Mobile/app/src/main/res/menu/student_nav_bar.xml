@@ -18,6 +18,10 @@
                     android:icon="@drawable/ic_score_24"
                     android:title="Study Progress"></item>
                 <item
+                    android:id="@+id/a_created_parent_account"
+                    android:icon="@drawable/ic_score_24"
+                    android:title="Register Parents Account"></item>
+                <item
                     android:id="@+id/a_student_nav_helplines"
                     android:icon="@drawable/ic_baseline_contact_phone_24"
                     android:title="Helplines"></item>

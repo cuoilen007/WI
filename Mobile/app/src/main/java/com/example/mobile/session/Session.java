@@ -1,7 +1,7 @@
 package com.example.mobile.session;
 
 public class Session {
-        static Object Session = null;
+        static Object Session;
 
         public static Object getSession() {
             return Session;

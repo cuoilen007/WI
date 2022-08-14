@@ -14,6 +14,14 @@ public class User implements Serializable {
     private String categoryUser;
     private boolean isCreatedParent;
     private String subjectTeach;
+
+    public String getClassed() {
+        return classed;
+    }
+
+    public void setClassed(String classed) {
+        this.classed = classed;
+    }
     private String classed;
     //private String token;
 

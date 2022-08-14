@@ -5,11 +5,22 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".activity.AcademyProgressActivity">
+
    <com.github.mikephil.charting.charts.CombinedChart
        android:id="@+id/combinedChart"
        android:layout_width="match_parent"
        android:layout_height="300dp"
-       android:layout_marginTop="20dp"
-       />
+       android:layout_marginTop="20dp" />
+
+   <TextView
+       android:id="@+id/textView28"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:text="Subject" />
+
+   <Spinner
+       android:id="@+id/spSubjectAcademyProgress"
+       android:layout_width="206dp"
+       android:layout_height="wrap_content" />
 
 </RelativeLayout>

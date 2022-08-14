@@ -24,6 +24,9 @@ import com.example.mobile.R;
 import com.example.mobile.fkfirebase.FkFireBase;
 import com.example.mobile.model.ScoreDetails;
 import com.example.mobile.model.Subject;
+import com.example.mobile.model.User;
+import com.example.mobile.session.DocumentId;
+import com.example.mobile.session.Session;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
@@ -35,13 +38,34 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ViewScoresActivity extends AppCompatActivity {
-    List<Subject> subjectList = new ArrayList<>();
-    List<ScoreDetails> scoreDetailsList = new ArrayList<>();
+    TextView tvFastTest1;
+    TextView tvMiddleTest1;
+    TextView tvFinalTest1;
+    TextView tvTotal1;
+    TextView tvFastTest2 ;
+    TextView tvMiddleTest2;
+    TextView tvFinalTest2;
+    TextView tvTotal2;
+    Spinner spSubject;
+    Integer countSem1;
+    Integer countSem2;
+    Double totalScoreSem1;
+    Double totalScoreSem2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_scores);
+
+        tvFastTest1 = findViewById(R.id.tvFastTest1);
+        tvMiddleTest1 = findViewById(R.id.tvMiddleTest1);
+        tvFinalTest1 = findViewById(R.id.tvFinalTest1);
+        tvTotal1 = findViewById(R.id.tvTotal1);
+        tvFastTest2 = findViewById(R.id.tvFastTest2);
+        tvMiddleTest2 = findViewById(R.id.tvMiddleTest2);
+        tvFinalTest2 = findViewById(R.id.tvFinalTest2);
+        tvTotal2 = findViewById(R.id.tvTotal2);
+        spSubject = findViewById(R.id.spSubject);
 
         ActionBar actionBar = getSupportActionBar();
         // showing the back button in action bar
@@ -51,91 +75,30 @@ public class ViewScoresActivity extends AppCompatActivity {
         Spannable text = new SpannableString(actionBar.getTitle());
         text.setSpan(new ForegroundColorSpan(Color.WHITE), 0, text.length(), Spannable.SPAN_INCLUSIVE_INCLUSIVE);
         actionBar.setTitle(text);
-
-        Spinner spSubject = findViewById(R.id.spSubject);
         TextView tvName = findViewById(R.id.tvName);
         TextView tvClass = findViewById(R.id.tvClass);
-        TextView tvFastTest1 = findViewById(R.id.tvFastTest1);
-        TextView tvMiddleTest1 = findViewById(R.id.tvMiddleTest1);
-        TextView tvFinalTest1 = findViewById(R.id.tvFinalTest1);
-        TextView tvTotal1 = findViewById(R.id.tvTotal1);
-        TextView tvFastTest2 = findViewById(R.id.tvFastTest2);
-        TextView tvMiddleTest2 = findViewById(R.id.tvMiddleTest2);
-        TextView tvFinalTest2 = findViewById(R.id.tvFinalTest2);
-        TextView tvTotal2 = findViewById(R.id.tvTotal2);
-
+        tvName.setText(((User)Session.getSession()).getFirstName() + " " +((User)Session.getSession()).getLastName());
+        tvClass.setText(((User)Session.getSession()).getClassed());
 
         List<String> subjectAdapter = new ArrayList<String>() {
         };
         subjectAdapter.add("Select Subject");
+        subjectAdapter.add("Biology");
+        subjectAdapter.add("Maths");
+        subjectAdapter.add("Physics");
+        subjectAdapter.add("English");
+        subjectAdapter.add("Chemistry");
+        subjectAdapter.add("Geography");
+        subjectAdapter.add("Literature");
+        subjectAdapter.add("History");
 
-        FirebaseFirestore db1 = FirebaseFirestore.getInstance();
-        db1.collection("Subject")
-                .get()
-                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-                    @Override
-                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                        if (task.isSuccessful()) {
-                            for (QueryDocumentSnapshot document : task.getResult()) {
-                                subjectAdapter.add(document.toObject(Subject.class).getSubjectName());
-                                subjectList.add(document.toObject(Subject.class));
-                            }
 
-                        } else {
-                            Log.w(TAG, "Error getting documents.", task.getException());
-                        }
-                    }
-                });
         spSubject.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_dropdown_item_1line, subjectAdapter));
-        tvName.setText("John Smith");
-        tvClass.setText("12A");
-
-
-
 
         spSubject.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                FirebaseFirestore db2 = FirebaseFirestore.getInstance();
-                db2.collection("ScoreDetails")
-                        .whereEqualTo("SubjectName", spSubject.getSelectedItem().toString())
-                        .whereEqualTo("studentid","2")
-                        .get()
-                        .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-                            @Override
-                            public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                                if (task.isSuccessful()) {
-                                    for (QueryDocumentSnapshot document : task.getResult()) {
-                                        scoreDetailsList.add(document.toObject(ScoreDetails.class));
-                                    }
-
-                                    for(ScoreDetails score : scoreDetailsList){
-                                        if(score.getTestname().equals("fast-test1")){
-                                            tvFastTest1.setText(String.valueOf(score.getScoreReceived()));
-                                        }
-                                        if(score.getTestname().equals("middle-test1")){
-                                            tvMiddleTest1.setText(String.valueOf(score.getScoreReceived()));
-                                        }
-                                        if(score.getTestname().equals("final-test1")){
-                                            tvFinalTest1.setText(String.valueOf(score.getScoreReceived()));
-                                        }
-                                        if(score.getTestname().equals("fast-test2")){
-                                            tvFastTest2.setText(String.valueOf(score.getScoreReceived()));
-                                        }
-                                        if(score.getTestname().equals("middle-test2")){
-                                            tvMiddleTest2.setText(String.valueOf(score.getScoreReceived()));
-                                        }
-                                        if(score.getTestname().equals("final-test2")){
-                                            tvFinalTest2.setText(String.valueOf(score.getScoreReceived()));
-                                        }
-                                    }
-
-                                } else {
-                                    Log.w(TAG, "Error getting documents.", task.getException());
-                                }
-                            }
-                        });
-
+                getScore(subjectAdapter.get(i));
             }
 
             @Override
@@ -144,18 +107,98 @@ public class ViewScoresActivity extends AppCompatActivity {
             }
 
         });
-
-
-        //chart
-
-
-
     }
-    //back
-    @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        super.onBackPressed();
-        return true;
+
+    public void getScore(String subject){
+        tvFastTest1 = findViewById(R.id.tvFastTest1);
+        tvMiddleTest1 = findViewById(R.id.tvMiddleTest1);
+        tvFinalTest1 = findViewById(R.id.tvFinalTest1);
+        tvTotal1 = findViewById(R.id.tvTotal1);
+        tvFastTest2 = findViewById(R.id.tvFastTest2);
+        tvMiddleTest2 = findViewById(R.id.tvMiddleTest2);
+        tvFinalTest2 = findViewById(R.id.tvFinalTest2);
+        tvTotal2 = findViewById(R.id.tvTotal2);
+        spSubject = findViewById(R.id.spSubject);
+        countSem1 = 0;
+        countSem2 = 0;
+        totalScoreSem1 =0.0;
+        totalScoreSem2 =0.0;
+
+
+        List<ScoreDetails> scoreDetailsList = new ArrayList<>();
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        db.collection("ScoreDetails")
+                .whereEqualTo("subjectName", subject)
+                .whereEqualTo("studentid", DocumentId.getDocumentId())
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful()) {
+                            for (QueryDocumentSnapshot document : task.getResult()) {
+                                scoreDetailsList.add(document.toObject(ScoreDetails.class));
+                            }
+                            if(scoreDetailsList.size()!=0){
+                                for(ScoreDetails score : scoreDetailsList){
+                                    if(score.getTestname().equals("fast-test1")){
+                                        tvFastTest1.setText(String.valueOf(score.getScoreReceived()));
+                                        totalScoreSem1 = score.getScoreReceived()*0.1;
+                                        countSem1++;
+                                    }
+                                    if(score.getTestname().equals("middle-test1")){
+                                        tvMiddleTest1.setText(String.valueOf(score.getScoreReceived()));
+                                        totalScoreSem1 = totalScoreSem1 + score.getScoreReceived()*0.3;
+                                        countSem1++;
+                                    }
+                                    if(score.getTestname().equals("final-test1")){
+                                        tvFinalTest1.setText(String.valueOf(score.getScoreReceived()));
+                                        totalScoreSem1 = totalScoreSem1 + score.getScoreReceived()*0.6;
+                                        countSem1++;
+                                    }
+                                    if(score.getTestname().equals("fast-test2")){
+                                        tvFastTest2.setText(String.valueOf(score.getScoreReceived()));
+                                        totalScoreSem2 = score.getScoreReceived()*0.1;
+                                        countSem2++;
+                                    }
+                                    if(score.getTestname().equals("middle-test2")){
+                                        tvMiddleTest2.setText(String.valueOf(score.getScoreReceived()));
+                                        totalScoreSem2 = totalScoreSem2 + score.getScoreReceived()*0.3;
+                                        countSem2++;
+                                    }
+                                    if(score.getTestname().equals("final-test2")){
+                                        tvFinalTest2.setText(String.valueOf(score.getScoreReceived()));
+                                        totalScoreSem2 = totalScoreSem2 + score.getScoreReceived()*0.6;
+                                        countSem2++;
+                                    }
+                                }
+                                if(countSem1 == 3){
+                                    tvTotal1.setText(String.valueOf(totalScoreSem1));
+                                }else{
+                                    tvTotal1.setText("");
+                                }
+
+                                if(countSem2== 3){
+                                    tvTotal2.setText(String.valueOf(totalScoreSem2));
+                                }else{
+                                    tvTotal2.setText("");
+                                }
+
+                            }else{
+                                tvFastTest1.setText("");
+                                tvMiddleTest1.setText("");
+                                tvFinalTest1.setText("");
+                                tvFastTest2.setText("");
+                                tvMiddleTest2.setText("");
+                                tvFinalTest2.setText("");
+                                tvTotal1.setText("");
+                                tvTotal2.setText("");
+                            }
+
+                        } else {
+                            Log.w(TAG, "Error getting documents.", task.getException());
+                        }
+                    }
+                });
     }
 
 
