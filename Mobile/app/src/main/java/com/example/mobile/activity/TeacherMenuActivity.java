@@ -46,7 +46,7 @@ public class TeacherMenuActivity extends AppCompatActivity implements Navigation
         navigationView.bringToFront();
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar,
                 R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-        toolbar.setTitle("???");
+        toolbar.setTitle("Teacher Menu");
         drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
         navigationView.setNavigationItemSelectedListener(this);
