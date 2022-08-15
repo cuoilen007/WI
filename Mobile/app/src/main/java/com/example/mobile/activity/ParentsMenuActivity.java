@@ -15,6 +15,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.mobile.R;
+import com.example.mobile.adapter.HelpLinesAdapter;
 import com.example.mobile.model.User;
 import com.example.mobile.session.DocumentId;
 import com.example.mobile.session.Session;
@@ -100,7 +101,7 @@ public class ParentsMenuActivity extends AppCompatActivity implements Navigation
         btnHelplines.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent=new Intent(ParentsMenuActivity.this, ContactusActivity.class);
+                Intent intent=new Intent(ParentsMenuActivity.this, HelpLinesActivity.class);
                 startActivity(intent);
             }
         });

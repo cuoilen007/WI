@@ -138,7 +138,7 @@ public class StudentMenuActivity extends AppCompatActivity implements Navigation
         btnHelplines.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent=new Intent(StudentMenuActivity.this, ContactusActivity.class);
+                Intent intent=new Intent(StudentMenuActivity.this, HelpLinesActivity.class);
                 startActivity(intent);
             }
         });
